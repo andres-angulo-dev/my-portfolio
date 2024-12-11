@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 
 class AppBarComponent extends StatefulWidget {
@@ -162,7 +163,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    String backgroundImage = screenSize.width < 780 ? 'assets/test4.png' : 'assets/test1.png';
+    String backgroundImage = screenSize.width < 780 ? 'assets/appbar_background_web.png' : 'assets/appbar_background_mobile.png';
 
     return SliverAppBar(
       pinned: true,
