@@ -9,34 +9,34 @@ class SectionHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column( 
-      crossAxisAlignment: CrossAxisAlignment.start, 
-      children: [ 
-        Padding( 
-          key: sectionKey, 
-          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 5.0), 
-          child: Column( 
-            crossAxisAlignment: CrossAxisAlignment.start, 
-            children: <Widget>[ 
-              Text( 
-                title, 
-                style: TextStyle( 
-                  fontSize: 20, 
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start horizontally.
+      children: [
+        Padding(
+          key: sectionKey, // Key for this section to identify it uniquely.
+          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 5.0), // Padding around the section.
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start horizontally.
+            children: <Widget>[
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 20,
                   fontWeight: FontWeight.bold, 
-                  color: Colors.white 
-                ), 
-              ), 
-              Container( 
-                margin: EdgeInsets.only(bottom: 5.0), 
-                height: 1.0, 
-                width: 340.0, 
-                color: Colors.white, 
-              ) 
-            ], 
-          ) 
-        ), 
-        child 
-      ], 
+                  color: Colors.white,
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 5.0), // Margin at the bottom of the line.
+                height: 1.0,
+                width: 340.0,
+                color: Colors.white, // Line color.
+              )
+            ],
+          ),
+        ),
+        child // The main content of the section.
+      ],
     );
   }
 }

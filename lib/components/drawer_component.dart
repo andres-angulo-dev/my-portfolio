@@ -23,6 +23,7 @@ class DrawerComponent extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
+            // User's name and email displayed with offset for alignment
             accountName: Transform.translate(
               offset: Offset(-10, 0),
               child: Text(
@@ -53,6 +54,7 @@ class DrawerComponent extends StatelessWidget {
               ),
             ),
           ),
+          // Drawer items for navigation
           _createDrawerItem(
             icon: Icons.info,
             text: 'À propos',
@@ -79,27 +81,29 @@ class DrawerComponent extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               Navigator.pushNamed(context, '/contact');
-            }
+            },
           ),
         ],
-      )
+      ),
     );
   }
 
-  Widget _createDrawerItem({ required IconData icon, required String text, required GestureTapCallback onTap}) {
+  // Helper function to create a Drawer item
+  Widget _createDrawerItem({required IconData icon, required String text, required GestureTapCallback onTap}) {
     return Padding( 
       padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
       child: Align(
         alignment: Alignment.centerLeft,
         child: ListTile(
-            leading: Icon(icon),
-            title: Text(text),
-            onTap: onTap,
-          )
+          leading: Icon(icon),
+          title: Text(text),
+          onTap: onTap,
+        ),
       ),
     );
   }
 
+  // Handle drawer item tap, close drawer and scroll to section
   void _onDrawerItemTap(BuildContext context, GlobalKey key) {
     Navigator.pop(context);
     scrollToSection(key);

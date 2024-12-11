@@ -105,10 +105,10 @@ class FormContactComponent extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           isSending 
-            ? Center(child: CircularProgressIndicator()) 
+            ? Center(child: CircularProgressIndicator()) // Show a loading indicator if the email is being sent.
             : ElevatedButton(
-            onPressed: sendEmail,
-            child: const Text('Envoyer'),
+              onPressed: sendEmail, // Trigger the sendEmail callback when pressed.
+              child: const Text('Envoyer'),
           ),
         ],
       ),
@@ -130,19 +130,19 @@ class FormContactComponent extends StatelessWidget {
         decoration: InputDecoration(
           labelText: labelText,
           border: const OutlineInputBorder(),
-          prefixIcon: icon != null ? Icon(icon) : null,
+          prefixIcon: icon != null ? Icon(icon) : null, // Add an icon if provided.
           filled: true,
-          fillColor: Colors.white,
+          fillColor: Colors.white, // Set background color for the text field.
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 2),
-            borderRadius: BorderRadius.circular(8.0)
+            borderSide: BorderSide(color: Colors.black, width: 2), // Style of the border when focused.
+            borderRadius: BorderRadius.circular(8.0),
           ),
-          labelStyle: TextStyle(color: Colors.black),
+          labelStyle: TextStyle(color: Colors.black), // Style for the label text.
         ),
         keyboardType: keyboardType,
         maxLines: maxLines,
-        validator: validator,
-      )
+        validator: validator, // Validation function for the text field.
+      ),
     );
   }
 }

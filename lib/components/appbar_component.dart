@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 
 class AppBarComponent extends StatefulWidget {
   final VoidCallback scrollToAboutSection;
+
   const AppBarComponent({ super.key, required this.scrollToAboutSection });
+
   @override
   AppBarComponentState createState() => AppBarComponentState();
 } 
+
 class AppBarComponentState extends State<AppBarComponent> with TickerProviderStateMixin {
   late final AnimationController _controllerButton;
   late final Animation<double> _animationButton;
@@ -32,6 +35,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
   }  
 
   void _initializeAnimations() {
+    // Button animation setup
     _controllerButton = AnimationController(
       duration: Duration(milliseconds: 600),
       vsync: this,
@@ -40,6 +44,8 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
       parent: _controllerButton, 
       curve: Curves.easeInCubic,
     );
+
+    // Fade animation for the button
     _fadeControllerButton = AnimationController(
       duration: Duration(seconds: 2),
       vsync: this,
@@ -51,6 +57,8 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
       parent: _fadeControllerButton, 
       curve: Curves.easeInOut,
     ));
+
+    // Text animation setup
     _textController = AnimationController(
       duration: Duration(seconds: 4),
       vsync: this,
@@ -60,22 +68,24 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
       end: Offset.zero,
     ).animate(CurvedAnimation(
       parent: _textController, 
-      curve: Curves.easeInOut
+      curve: Curves.easeInOut,
     ));
     _offsetAnimationBis = Tween<Offset>(
       begin: Offset(0.0, 0.5),
       end: Offset.zero,
     ).animate(CurvedAnimation(
       parent: _textController, 
-      curve: Curves.easeInOut
+      curve: Curves.easeInOut,
     ));
     _fadeAnimation = Tween<double>(
       begin: 0.1,
       end: 1.0,
     ).animate(CurvedAnimation(
       parent: _textController, 
-      curve: Curves.easeInOut
+      curve: Curves.easeInOut,
     ));
+
+    // Letter animations for "WELCOME"
     _letterControllers = List.generate(name.length, (index) {
       return AnimationController(
         duration: Duration(milliseconds: 2000 + index * 100),
@@ -94,6 +104,8 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
         curve: Curves.easeInOut,
       ));
     }).toList();
+
+    // Background animations
     _controllerBackground = AnimationController(
       duration: Duration(seconds: 2),
       vsync: this,
@@ -103,14 +115,14 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
       end: Offset(0.0, 0.0),
     ).animate(CurvedAnimation(
       parent: _controllerBackground, 
-      curve: Curves.easeInOut
+      curve: Curves.easeInOut,
     ));
     _fadeAnimationBackground = Tween<double>(
       begin: 0.0,
       end: 1.0,
     ).animate(CurvedAnimation(
       parent: _controllerBackground, 
-      curve: Curves.easeInOut
+      curve: Curves.easeInOut,
     ));
   }
 
@@ -125,6 +137,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
 
   @override
   void dispose() {
+    // Dispose of animation controllers to free up resources.
     _controllerButton.dispose();
     _fadeControllerButton.dispose();
     _textController.dispose();
@@ -136,6 +149,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
   }
 
   Offset _getOffsetForLetter(int index, int totalLetters) {
+    // Calculate offset for letter animation based on its position.
     if (index == 0) {
       return Offset(-5.0, 0.0);
     } else if (index == totalLetters - 1) {
@@ -149,9 +163,10 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     String backgroundImage = screenSize.width < 780 ? 'assets/test4.png' : 'assets/test1.png';
+
     return SliverAppBar(
       pinned: true,
-      backgroundColor: Colors.amber[600],//Color.fromARGB(255, 0, 0, 0),
+      backgroundColor: Colors.amber[600],
       expandedHeight: MediaQuery.of(context).size.height,
       iconTheme: IconThemeData(color: Colors.white),
       flexibleSpace: FlexibleSpaceBar(
@@ -165,14 +180,14 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
                   backgroundImage,
                   fit: BoxFit.cover,
                   width: double.infinity,
-                  height:double.infinity,
+                  height: double.infinity,
                 ),
-              ),  
+              ),
             ),
             _buildAnimatedText(),
             _buildAnimatedButton(),
           ],
-        ), 
+        ),
       ),
     );
   }
@@ -187,15 +202,15 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
             opacity: _fadeAnimation,
             child: SlideTransition(
               position: _offsetAnimationBis,
-              child: 
-              Text(
+              child: Text(
                 'Bienvenue',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
-                )),
+                ),
               ),
-            )
+            ),
+          ),
         ),
         Positioned(
           left: 30,
@@ -228,8 +243,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
             opacity: _fadeAnimation,
             child: SlideTransition(
               position: _offsetAnimation,
-              child: 
-              Text(
+              child: Text(
                 'Bienvenido',
                 style: TextStyle(
                   color: Colors.white,
@@ -267,14 +281,14 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                        onPressed: widget.scrollToAboutSection,
-                        child: Icon(
-                          Icons.keyboard_arrow_down, 
-                          size: 32,
-                          color: Colors.black
+                          onPressed: widget.scrollToAboutSection,
+                          child: Icon(
+                            Icons.keyboard_arrow_down, 
+                            size: 32,
+                            color: Colors.black,
                           ),
                         ),
-                      ), 
+                      ),
                     ); 
                   },
                 ),

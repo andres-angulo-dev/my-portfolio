@@ -25,7 +25,6 @@ class HomeScreen extends StatelessWidget {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,26 +37,8 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.amber[600],
-          // gradient: LinearGradient(
-          //   begin: Alignment.topCenter,
-          //   end: Alignment.bottomRight,
-          //   // colors: [
-          //   //   Colors.black,
-          //   //   Colors.black87,
-          //   //   Colors.grey[900]!,
-          //   //   Colors.grey[700]!,
-          //   //   Colors.grey[500]!,
-          //   //   Colors.grey[300]!,
-          //   // ],
-          //   // colors: [
-          //   //   Colors.amber,
-          //   //   Colors.amber[500]!,
-          //   //   Colors.amber[300]!,
-          //   //   Colors.amber[200]!,
-          //   //   Colors.amber[100]!,
-          //   // ],
-          // ),
+          color: const Color(0xFFFFB300),
+          // Placeholder for a potential gradient decoration.
         ),
         child: _buildBody(context),
       ),
@@ -73,8 +54,8 @@ class HomeScreen extends StatelessWidget {
         SliverToBoxAdapter(
           child: ListView(
             controller: _scrollController,
-            cacheExtent: 2000,
-            shrinkWrap: true,
+            cacheExtent: 2000, // Cache extent to improve performance when scrolling.
+            shrinkWrap: true, // Makes the ListView take up only as much space as needed.
             children: <Widget>[
               SectionHomePage(
                 sectionKey: _aboutKey,
@@ -97,8 +78,8 @@ class HomeScreen extends StatelessWidget {
                 child: TechnologiesCard(),
               ),
             ],
-          )
-        )
+          ),
+        ),
       ],
     );
   }

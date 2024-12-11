@@ -4,8 +4,12 @@ import './screens/home_screen.dart';
 import './screens/contact_screen.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: '.env');
-  runApp(const MyPortfolioApp());
+  try {
+    await dotenv.load(fileName: '.env'); // Load environment variables from the .env file.
+    runApp(const MyPortfolioApp());
+  } catch (error) {
+    print('Error loading .env file: $error');
+  }
 }
 
 class MyPortfolioApp extends StatelessWidget {
@@ -15,7 +19,7 @@ class MyPortfolioApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mon portfolio',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(primarySwatch: Colors.blue), 
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {

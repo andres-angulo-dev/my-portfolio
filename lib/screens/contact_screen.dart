@@ -9,8 +9,8 @@ import '../components/form_contact_component.dart';
 class ContactScreen extends StatefulWidget {
   const ContactScreen({ super.key });
 
-   @override
-   ContactScreenState createState() => ContactScreenState();
+  @override
+  ContactScreenState createState() => ContactScreenState();
 }
 
 class ContactScreenState extends State<ContactScreen> {
@@ -25,6 +25,7 @@ class ContactScreenState extends State<ContactScreen> {
 
   @override
   void dispose() {
+    // Dispose controllers to free up resources.
     _firstNameController.dispose();
     _lastNameController.dispose();
     _emailController.dispose();
@@ -34,12 +35,13 @@ class ContactScreenState extends State<ContactScreen> {
     super.dispose();
   }
 
-  void _resetForm() { 
-    _firstNameController.clear(); 
-    _lastNameController.clear(); 
+  void _resetForm() {
+    // Clear all text fields and reset the form state.
+    _firstNameController.clear();
+    _lastNameController.clear();
     _emailController.clear();
-    _companyController.clear(); 
-    _phoneController.clear(); 
+    _companyController.clear();
+    _phoneController.clear();
     _messageController.clear();
     _formKey.currentState?.reset();
   }
@@ -51,6 +53,7 @@ class ContactScreenState extends State<ContactScreen> {
 
     if (_formKey.currentState!.validate()) {
       try {
+        // Configure the SMTP server using environment variables.
         final smtpServer = SmtpServer(
           dotenv.env['MAILTRAP_HOST']!,
           port: int.parse(dotenv.env['MAILTRAP_PORT']!),
@@ -58,27 +61,29 @@ class ContactScreenState extends State<ContactScreen> {
           password: dotenv.env['MAILTRAP_PASSWORD'],
         );
 
+        // Construct the email message.
         final message = Message()
-        ..from = Address(dotenv.env['MAILTRAP_FROM']!,'${_firstNameController.text} ${_lastNameController.text}')
-        ..recipients.add(dotenv.env['MAILTRAP_TO']!)
-        ..subject = 'New contact message'
-        ..text = 'LastName: ${_lastNameController.text}\n'
-                  'FirstName: ${_firstNameController.text}\n'
-                  'Email: ${_emailController.text}\n'
-                  'Company: ${_companyController.text}\n'
-                  'Phone: ${_phoneController.text}\n'
-                  'Message: ${_messageController.text}';
+          ..from = Address(dotenv.env['MAILTRAP_FROM']!, '${_firstNameController.text} ${_lastNameController.text}')
+          ..recipients.add(dotenv.env['MAILTRAP_TO']!)
+          ..subject = 'New contact message'
+          ..text = 'LastName: ${_lastNameController.text}\n'
+              'FirstName: ${_firstNameController.text}\n'
+              'Email: ${_emailController.text}\n'
+              'Company: ${_companyController.text}\n'
+              'Phone: ${_phoneController.text}\n'
+              'Message: ${_messageController.text}';
 
-          await send(message, smtpServer);
-          _showSuccessDialog();
+        // Send the email.
+        await send(message, smtpServer);
+        _showSuccessDialog();
       } on MailerException catch (error) {
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to send email : ${error.message}'),)
+          SnackBar(content: Text('Failed to send email: ${error.message}')),
         );
       } catch (e) {
         if (!mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar( 
+        ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Error: ${e.toString()}')),
         );
       } finally {
@@ -101,7 +106,7 @@ class ContactScreenState extends State<ContactScreen> {
           onOkPressed: () {
             Navigator.of(context).pop();
           },
-          resetForm: _resetForm
+          resetForm: _resetForm,
         );
       },
     );
@@ -132,22 +137,21 @@ class ContactScreenState extends State<ContactScreen> {
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-          )
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: FormContactComponent(
-            formKey: _formKey, 
-            firstNameController: _firstNameController, 
-            lastNameController: _lastNameController, 
-            emailController: _emailController, 
-            companyController: _companyController, 
-            phoneController: _phoneController, 
-            messageController: _messageController, 
-            isSending: _isSending, 
+            formKey: _formKey,
+            firstNameController: _firstNameController,
+            lastNameController: _lastNameController,
+            emailController: _emailController,
+            companyController: _companyController,
+            phoneController: _phoneController,
+            messageController: _messageController,
+            isSending: _isSending,
             sendEmail: _sendEmail,
-            ),
-           
+          ),
         ),
       ),
     );
