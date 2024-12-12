@@ -48,7 +48,7 @@ class TechnoCardState extends State<TechnoCard> with SingleTickerProviderStateMi
         await _controller.forward(from: 0.0); // Start the animation
         await Future.delayed(const Duration(seconds: 5)); // Pause before the next cycle
       } catch (error) {
-        print("Error during animation cycle: $error");
+        debugPrint("Error during animation cycle: $error");
       }
     } 
   }
@@ -59,7 +59,7 @@ class TechnoCardState extends State<TechnoCard> with SingleTickerProviderStateMi
       setState(() { 
         _isAnimating = true; 
       }); 
-      _startDelayTimer = Timer(const Duration(seconds: 2), () {
+      _startDelayTimer = Timer(const Duration(seconds: 1), () {
         _startAnimationCycle(); 
       });
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './download_cv_button.dart';
 
 class AboutMeCard extends StatelessWidget {
   const AboutMeCard({ super.key });
@@ -37,6 +38,8 @@ class AboutMeCard extends StatelessWidget {
                     color: Colors.white, // Text color for readability.
                   ),
                 ),
+                const SizedBox(height: 20),
+                DownloadCvButton(),
               ],
             ),
           ),

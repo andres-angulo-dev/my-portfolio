@@ -8,7 +8,7 @@ Future<void> main() async {
     await dotenv.load(fileName: '.env'); // Load environment variables from the .env file.
     runApp(const MyPortfolioApp());
   } catch (error) {
-    print('Error loading .env file: $error');
+    debugPrint('Error loading .env file: $error');
   }
 }
 
