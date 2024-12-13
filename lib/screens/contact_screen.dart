@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
 
+import 'package:flutter/material.dart';
+
+import '../components/email_sender.dart';  
 import '../components/success_dialog_component.dart';
 import '../components/form_contact_component.dart';
 
 class ContactScreen extends StatefulWidget {
-  const ContactScreen({ super.key });
+  const ContactScreen({super.key});
 
   @override
   ContactScreenState createState() => ContactScreenState();
@@ -25,7 +24,6 @@ class ContactScreenState extends State<ContactScreen> {
 
   @override
   void dispose() {
-    // Dispose controllers to free up resources.
     _firstNameController.dispose();
     _lastNameController.dispose();
     _emailController.dispose();
@@ -36,7 +34,6 @@ class ContactScreenState extends State<ContactScreen> {
   }
 
   void _resetForm() {
-    // Clear all text fields and reset the form state.
     _firstNameController.clear();
     _lastNameController.clear();
     _emailController.clear();
@@ -44,58 +41,6 @@ class ContactScreenState extends State<ContactScreen> {
     _phoneController.clear();
     _messageController.clear();
     _formKey.currentState?.reset();
-  }
-
-  Future<void> _sendEmail() async {
-    setState(() {
-      _isSending = true;
-    });
-
-    if (_formKey.currentState!.validate()) {
-      try {
-        // Configure the SMTP server using environment variables.
-        final smtpServer = SmtpServer(
-          dotenv.env['MAILTRAP_HOST']!,
-          port: int.parse(dotenv.env['MAILTRAP_PORT']!),
-          username: dotenv.env['MAILTRAP_USERNAME'],
-          password: dotenv.env['MAILTRAP_PASSWORD'],
-        );
-
-        // Construct the email message.
-        final message = Message()
-          ..from = Address(dotenv.env['MAILTRAP_FROM']!, '${_firstNameController.text} ${_lastNameController.text}')
-          ..recipients.add(dotenv.env['MAILTRAP_TO']!)
-          ..subject = 'New contact message'
-          ..text = 'LastName: ${_lastNameController.text}\n'
-              'FirstName: ${_firstNameController.text}\n'
-              'Email: ${_emailController.text}\n'
-              'Company: ${_companyController.text}\n'
-              'Phone: ${_phoneController.text}\n'
-              'Message: ${_messageController.text}';
-
-        // Send the email.
-        await send(message, smtpServer);
-        _showSuccessDialog();
-      } on MailerException catch (error) {
-        if (!mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to send email: ${error.message}')),
-        );
-      } catch (e) {
-        if (!mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.toString()}')),
-        );
-      } finally {
-        setState(() {
-          _isSending = false;
-        });
-      }
-    } else {
-      setState(() {
-        _isSending = false;
-      });
-    }
   }
 
   void _showSuccessDialog() {
@@ -150,7 +95,22 @@ class ContactScreenState extends State<ContactScreen> {
             phoneController: _phoneController,
             messageController: _messageController,
             isSending: _isSending,
-            sendEmail: _sendEmail,
+            sendEmail: () => sendEmail(
+              formKey: _formKey,
+              context: context,
+              firstNameController: _firstNameController,
+              lastNameController: _lastNameController,
+              emailController: _emailController,
+              companyController: _companyController,
+              phoneController: _phoneController,
+              messageController: _messageController,
+              showSuccessDialog: _showSuccessDialog,
+              setIsSending: (value) {
+                setState(() {
+                  _isSending = value;
+                });
+              },
+            ),
           ),
         ),
       ),

@@ -50,7 +50,7 @@ class SkillsCard extends StatelessWidget {
               clipBehavior: Clip.none, // Allow elements to extend beyond the bounds of the stack.
               children: [
                 SizedBox(
-                  height: 230, // Fixed height for the card.
+                  height: 230,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start horizontally.
                     children: [

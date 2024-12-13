@@ -41,6 +41,7 @@ dependencies:
   path_provider: ^2.1.5
   permission_handler: ^11.3.1
   file_picker: 8.1.4
+  http: ^1.2.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -80,6 +81,7 @@ flutter:
     - assets/my_portfolio.png
     - assets/cv_Andrés_Angulo.pdf
     - .env
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
