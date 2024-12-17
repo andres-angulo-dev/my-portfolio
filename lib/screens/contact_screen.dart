@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
-
 import '../components/email_sender.dart';  
 import '../components/success_dialog_component.dart';
 import '../components/form_contact_component.dart';
+import '../utils/global_colors.dart';
 
 class ContactScreen extends StatefulWidget {
-  const ContactScreen({super.key});
+  const ContactScreen({ super.key });
 
   @override
   ContactScreenState createState() => ContactScreenState();
@@ -64,21 +63,21 @@ class ContactScreenState extends State<ContactScreen> {
         title: Text(
           'Contact',
           style: TextStyle(
-            color: Colors.white,
+            color: GlobalColors.textColor,
             fontSize: 18.0,
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 46, 50, 78),
+        backgroundColor: GlobalColors.contactGradient1,
         iconTheme: IconThemeData(
-          color: Colors.white,
+          color: GlobalColors.textColor,
         ),
       ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(255, 46, 50, 78),
-              Colors.white,
+              GlobalColors.contactGradient1,
+              GlobalColors.contactGradient2,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,

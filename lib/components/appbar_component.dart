@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../utils/global_colors.dart';
+import '../utils/global_others.dart';
 
 class AppBarComponent extends StatefulWidget {
   final VoidCallback scrollToAboutSection;
@@ -162,13 +164,13 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    String backgroundImage = screenSize.width < 780 ? 'assets/appbar_background_web.png' : 'assets/appbar_background_mobile.png';
+    String backgroundImage = screenSize.width < 780 ? AppImages.appbarBackgroundMobile : AppImages.appbarBackgroundWeb;
 
     return SliverAppBar(
       pinned: true,
-      backgroundColor: Colors.amber[600],
+      backgroundColor: GlobalColors.primaryBackground,
       expandedHeight: MediaQuery.of(context).size.height,
-      iconTheme: IconThemeData(color: Colors.white),
+      iconTheme: IconThemeData(color: GlobalColors.appBarTextColor),
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: [
@@ -205,7 +207,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
               child: Text(
                 'Bienvenue',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: GlobalColors.appBarTextColor,
                   fontSize: 20.0,
                 ),
               ),
@@ -227,7 +229,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
                   child: Text(
                     name[index],
                     style: TextStyle(
-                      color: Colors.white,
+                      color: GlobalColors.appBarTextColor,
                       fontSize: 24,
                     ),
                   ),
@@ -246,7 +248,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
               child: Text(
                 'Bienvenido',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: GlobalColors.appBarTextColor,
                   fontSize: 20.0,
                 ),
               ),
@@ -277,7 +279,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
                         width: 200,
                         height: 25,
                         child: MaterialButton(
-                          color: Colors.white,
+                          color: GlobalColors.appBarButtonBackground,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
                           ),
@@ -285,7 +287,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
                           child: Icon(
                             Icons.keyboard_arrow_down, 
                             size: 32,
-                            color: Colors.black,
+                            color: GlobalColors.appBarButtonArrow,
                           ),
                         ),
                       ),

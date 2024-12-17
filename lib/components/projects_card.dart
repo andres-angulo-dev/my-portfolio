@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../utils/global_colors.dart';
+import '../utils/global_others.dart';
 
 class ProjectsCard extends StatelessWidget {
   ProjectsCard({ super.key });
@@ -8,12 +10,12 @@ class ProjectsCard extends StatelessWidget {
   final List<Map<String, String>> projects = [
     { 
       'name': 'App : Mon Portfolio',
-      'image': 'assets/my_portfolio.png', 
+      'image': AppImages.myPortfolioProject, 
       'url': 'https://weather-frontend-sage.vercel.app/',
     },
     {
       'name': 'Site : Your Wather',
-      'image': 'assets/your_weather.png',
+      'image': AppImages.yourWeatherProject,
       'url': 'https://weather-frontend-sage.vercel.app/',
     }
   ];
@@ -24,7 +26,7 @@ class ProjectsCard extends StatelessWidget {
       elevation: 10, // Adds a shadow effect to the card.
       margin: EdgeInsets.only(bottom: 40), // Margin at the bottom of the card.
       shape: LinearBorder(side: BorderSide.none), // Shape of the card with no side border.
-      color: Color.fromARGB(150, 255, 255, 255), // Semi-transparent white background color.
+      color: Color(0xFFA3B18A).withOpacity(0.65), // Semi-transparent white background color.
       child: Padding(
         padding: EdgeInsets.all(10), // Padding inside the card.
         child: CarouselSlider(
@@ -61,7 +63,7 @@ class ProjectsCard extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white, // Text color for readability.
+                          color: GlobalColors.projectsTitleColor, // Text color for readability.
                         ),
                       ),
                     ],

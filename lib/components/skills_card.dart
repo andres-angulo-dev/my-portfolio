@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../utils/global_colors.dart';
 
 class SkillsCard extends StatelessWidget {
   const SkillsCard({super.key});
@@ -10,26 +11,26 @@ class SkillsCard extends StatelessWidget {
     List<Map<String, dynamic>> skills = [
       {
         'title': 'Création de sites web sur mesure',
-        'color': Colors.amber,
-        'description': 'Conception de sites web personnalisés, tenant compte de vos exigences et utilisant les dernières technologies et tendances de design.',
+        'color': GlobalColors.skillsCardBorder1,
+        'description': 'Conception de sites web personnalisés, en tenant compte des dernières technologies et tendances de design.',
         'icon': FontAwesomeIcons.computer,
       },
       {
         'title': 'Développement d\'applications web',
-        'color': Colors.green,
-        'description': 'Création d\'applications web interactives et performantes, améliorant l\'expérience utilisateur et répondant à des besoins spécifiques.',
+        'color': GlobalColors.skillsCardBorder2,
+        'description': 'Création d\'applications web interactives, performantes et sécruriséss, tout en améliorant l\'expérience utilisateur.',
         'icon': FontAwesomeIcons.mobile,
       },
       {
         'title': 'Optimisation pour les moteurs de recherche (SEO)',
-        'color': Colors.blue,
+        'color': GlobalColors.skillsCardBorder3,
         'description': 'Amélioration de la visibilité en ligne par l\'optimisation du site web pour les moteurs de recherche.',
         'icon': FontAwesomeIcons.magnifyingGlass,
       },
       {
         'title': 'Hébergement & Déploiement',
-        'color': Colors.pink,
-        'description': 'Déploiement des solutions sur les plateformes adaptées à vos besoins, simplifiant les interactions avec les prestataires de services.',
+        'color': GlobalColors.skillsCardBorder4,
+        'description': 'Déploiement des solutions sur les plateformes adaptées, simplifiant les interactions avec les prestataires de services.',
         'icon': FontAwesomeIcons.powerOff,
       },
     ];
@@ -70,7 +71,7 @@ class SkillsCard extends StatelessWidget {
                           skill['title'],
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.black,
+                            color: GlobalColors.textColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -78,7 +79,7 @@ class SkillsCard extends StatelessWidget {
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.white, // Background color for the description container.
+                            color: GlobalColors.cardBackground, // Background color for the description container.
                             border: Border.all(color: skill['color'], width: 3), // Border color and width.
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(12),
@@ -90,7 +91,7 @@ class SkillsCard extends StatelessWidget {
                             skill['description'],
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.black,
+                              color: GlobalColors.textColor,
                             ),
                           ),
                         ),
@@ -110,7 +111,7 @@ class SkillsCard extends StatelessWidget {
                         border: Border.all(color: skill['color'], width: 2), // Border color and width.
                       ),
                       padding: EdgeInsets.all(8), // Padding inside the icon container.
-                      child: FaIcon(skill['icon'], color: Colors.black, size: 24), // Display the skill icon.
+                      child: FaIcon(skill['icon'], color: GlobalColors.skillsIconBlack, size: 24), // Display the skill icon.
                     ),
                   ),
                 ),

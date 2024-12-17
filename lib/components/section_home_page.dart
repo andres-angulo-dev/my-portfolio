@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/global_colors.dart';
 
 class SectionHomePage extends StatelessWidget {
   final GlobalKey sectionKey;
@@ -23,14 +24,14 @@ class SectionHomePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold, 
-                  color: Colors.white,
+                  color: GlobalColors.titleColor,
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(bottom: 5.0), // Margin at the bottom of the line.
                 height: 1.0,
                 width: 340.0,
-                color: Colors.white, // Line color.
+                color: GlobalColors.titleColor, // Line color.
               )
             ],
           ),

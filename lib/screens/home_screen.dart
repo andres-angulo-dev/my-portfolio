@@ -4,10 +4,11 @@ import '../components/appbar_component.dart';
 import '../components/drawer_component.dart';
 import '../components/section_home_page.dart';
 import '../components/about_me_card.dart';
-import '../components/projetcs.card.dart';
+import '../components/projects_card.dart';
 import '../components/skills_card.dart';
 import '../components/techno_card.dart';
 import '../components/fab_circular_menu.dart';
+import '../utils/global_colors.dart';
 
 class HomeScreen extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();
@@ -35,10 +36,20 @@ class HomeScreen extends StatelessWidget {
         skillsKey: _skillsKey,
         technoKey: _technoKey,
       ),
-      body: Container(
+     body: Container(
         decoration: BoxDecoration(
-          color: const Color(0xFFFFB300),
+          color: GlobalColors.secondaryBackground,
           // Placeholder for a potential gradient decoration.
+          // gradient: LinearGradient(
+          //   begin: Alignment.topCenter,
+          //   end: Alignment.bottomCenter,
+          //   colors: [
+          //   GlobalColors.primaryBackground,
+          //   GlobalColors.primaryBackground.withOpacity(0.8),
+          //   GlobalColors.secondaryBackground.withOpacity(0.7),
+          //   GlobalColors.secondaryBackground,
+          //   ]
+          // )
         ),
         child: _buildBody(context),
       ),

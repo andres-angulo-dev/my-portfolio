@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../utils/global_colors.dart';
+import '../utils/global_others.dart';
 
 class DrawerComponent extends StatelessWidget {
   final Function(GlobalKey) scrollToSection;
@@ -31,7 +33,7 @@ class DrawerComponent extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: GlobalColors.drawerTitleColor,
                 ),
               ), 
             ),
@@ -42,14 +44,14 @@ class DrawerComponent extends StatelessWidget {
                 'Développeur Web & Mobile',
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.white,
+                  color: GlobalColors.drawerTitleColor,
                 ),
               ),
             ),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: GlobalColors.drawerTitleColor,
               image: DecorationImage(
-                image: AssetImage('assets/drawer_background.jpeg'), 
+                image: AssetImage(AppImages.drawerBackground), 
                 fit: BoxFit.cover,
               ),
             ),

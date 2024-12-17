@@ -2,8 +2,8 @@ import 'dart:io' as io;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
-// import 'package:permission_handler/permission_handler.dart';
 import './permission_manager.dart';
+import '../utils/global_others.dart';
 
 class DownloadCvButton extends StatelessWidget {
   const DownloadCvButton({super.key});
@@ -34,7 +34,7 @@ class DownloadCvButton extends StatelessWidget {
         final filePath = '${directory.path}/cv_Andrés_Angulo.pdf';
 
         // Load the file from assets
-        final byteData = await rootBundle.load('assets/cv_Andrés_Angulo.pdf');
+        final byteData = await rootBundle.load(AppImages.cvAndresAngulo);
 
         // Write the file to the system
         final file = io.File(filePath);

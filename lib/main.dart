@@ -19,7 +19,7 @@ class MyPortfolioApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mon portfolio',
-      theme: ThemeData(primarySwatch: Colors.blue), 
+      theme: ThemeData(primarySwatch: Colors.red), 
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {

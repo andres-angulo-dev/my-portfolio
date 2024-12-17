@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/global_colors.dart';
 
 class FormContactComponent extends StatelessWidget {
   final GlobalKey<FormState> formKey; 
@@ -33,7 +34,7 @@ class FormContactComponent extends StatelessWidget {
           Text(
             'Vous souhaitez me contacter ?',
             style: TextStyle(
-              color: Colors.white,
+              color: GlobalColors.textColor,
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
             ),
@@ -43,7 +44,7 @@ class FormContactComponent extends StatelessWidget {
           Text(
             'N\'hésitez pas à me laisser un message. Je vous contacterai dès que possible !',
             style: TextStyle(
-              color: Colors.white,
+              color: GlobalColors.textColor,
               fontSize: 14.0
             ),
             textAlign: TextAlign.center,
@@ -132,12 +133,12 @@ class FormContactComponent extends StatelessWidget {
           border: const OutlineInputBorder(),
           prefixIcon: icon != null ? Icon(icon) : null, // Add an icon if provided.
           filled: true,
-          fillColor: Colors.white, // Set background color for the text field.
+          fillColor: GlobalColors.contactFielBacground, // Set background color for the text field.
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 2), // Style of the border when focused.
+            borderSide: BorderSide(color: GlobalColors.contactBorderHover, width: 2), // Style of the border when focused.
             borderRadius: BorderRadius.circular(8.0),
           ),
-          labelStyle: TextStyle(color: Colors.black), // Style for the label text.
+          labelStyle: TextStyle(color: GlobalColors.contactBorder), // Style for the label text.
         ),
         keyboardType: keyboardType,
         maxLines: maxLines,

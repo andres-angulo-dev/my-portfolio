@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import 'dart:async';
+import '../utils/global_colors.dart';
 
 class TechnoCard extends StatefulWidget {
   final String title;
@@ -88,15 +89,15 @@ class TechnoCardState extends State<TechnoCard> with SingleTickerProviderStateMi
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12), // Rounded corners for the card.
       ),
-      color: widget.color, // Background color of the card.
+      color: GlobalColors.technoCardBorder, // Background color of the card.
       margin: const EdgeInsets.fromLTRB(5, 5, 5, 25), // Margin around the card.
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start horizontally.
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Colors.grey[800], // Background color of the container.
-              border: Border.all(color: Colors.white, width: 1), // Border color and width.
+              color: GlobalColors.cardBackground, // Background color of the container.
+              border: Border.all(color: GlobalColors.technoCardBorder, width: 1), // Border color and width.
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
@@ -136,7 +137,7 @@ class TechnoCardState extends State<TechnoCard> with SingleTickerProviderStateMi
                       const SizedBox(height: 6), // Space between the icon and the text.
                       Text(
                         techno['label'],
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: GlobalColors.textColor),
                       ),
                     ],
                   );
@@ -146,7 +147,7 @@ class TechnoCardState extends State<TechnoCard> with SingleTickerProviderStateMi
           ),
           Container(
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.amber, width: 3), // Border color and width for the bottom container.
+              border: Border.all(color: GlobalColors.technoCardBorder, width: 3), // Border color and width for the bottom container.
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(12),
                 bottomRight: Radius.circular(12),
@@ -160,7 +161,7 @@ class TechnoCardState extends State<TechnoCard> with SingleTickerProviderStateMi
               style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: GlobalColors.technoTitleColor, //title container
               ),
             ),
           ),
@@ -175,7 +176,7 @@ class TechnologiesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color backgroundColorTitle = Colors.amber; // Background color for the title sections.
+    final Color backgroundColorTitle = Colors.red; // Background color for the title sections.
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start horizontally.
       children: [
@@ -183,26 +184,26 @@ class TechnologiesCard extends StatelessWidget {
           title: 'FRONTEND',
           color: backgroundColorTitle,
           technologies: [
-            {'icon': FontAwesomeIcons.react, 'color': Colors.blue, 'label': 'React'},
-            {'icon': FontAwesomeIcons.squareJs, 'color': Colors.yellow, 'label': 'JS'},
-            {'icon': FontAwesomeIcons.flutter, 'color': Colors.blue[900], 'label': 'Flutter'},
-            {'icon': FontAwesomeIcons.html5, 'color': Colors.orange[900], 'label': 'HTML 5'},
-            {'icon': FontAwesomeIcons.css3Alt, 'color': Colors.blue[900], 'label': 'CSS 3'},
+            {'icon': FontAwesomeIcons.react, 'color': GlobalColors.technoIconBlue, 'label': 'React'},
+            {'icon': FontAwesomeIcons.squareJs, 'color': GlobalColors.technoIconYellow, 'label': 'JS'},
+            {'icon': FontAwesomeIcons.flutter, 'color': GlobalColors.technoIconBlueOpt, 'label': 'Flutter'},
+            {'icon': FontAwesomeIcons.html5, 'color': GlobalColors.technoIconOrangeOpt, 'label': 'HTML 5'},
+            {'icon': FontAwesomeIcons.css3Alt, 'color': GlobalColors.technoIconBlueOpt, 'label': 'CSS 3'},
           ],
         ),
         TechnoCard(
           title: 'BACKEND',
           color: backgroundColorTitle,
           technologies: [
-            {'icon': FontAwesomeIcons.node, 'color': Colors.green, 'label': 'Node'},
-            {'icon': FontAwesomeIcons.database, 'color': Colors.white, 'label': 'MongoDB'},
+            {'icon': FontAwesomeIcons.node, 'color': GlobalColors.technoIconGreen, 'label': 'Node'},
+            {'icon': FontAwesomeIcons.database, 'color': GlobalColors.technoIconBlack, 'label': 'MongoDB'},
           ],
         ),
         TechnoCard(
           title: 'AUTRES',
           color: backgroundColorTitle,
           technologies: [
-            {'icon': FontAwesomeIcons.github, 'color': Colors.black, 'label': 'GitHub'},
+            {'icon': FontAwesomeIcons.github, 'color': GlobalColors.technoIconBlack, 'label': 'GitHub'},
           ],
         ),
       ],
