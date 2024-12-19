@@ -14,7 +14,8 @@ class AboutMeCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12), // Rounded corners.
       ),
       color: GlobalColors.cardBackground, // Custom background color.
-      margin: const EdgeInsets.fromLTRB(10, 0, 10, 40), // External margin.
+      margin: const EdgeInsets.fromLTRB(10, 0, 10, 40),
+      child: SingleChildScrollView(
       child: Stack(
         children: [
           Padding(
@@ -65,6 +66,8 @@ class AboutMeCard extends StatelessWidget {
           ),
         ],
       ),
+
+      ) // External margin.
     );
   }
 }

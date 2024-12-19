@@ -13,13 +13,13 @@ Future<void> main() async {
 }
 
 class MyPortfolioApp extends StatelessWidget {
-  const MyPortfolioApp({super.key});
+  const MyPortfolioApp({ super.key });
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mon portfolio',
-      theme: ThemeData(primarySwatch: Colors.red), 
+      theme: ThemeData(primarySwatch: Colors.green), 
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {

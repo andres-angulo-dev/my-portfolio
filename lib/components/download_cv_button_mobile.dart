@@ -6,7 +6,7 @@ import './permission_manager.dart';
 import '../utils/global_others.dart';
 
 class DownloadCvButton extends StatelessWidget {
-  const DownloadCvButton({super.key});
+  const DownloadCvButton({ super.key });
 
   // Function to handle CV download for mobile
   Future<void> _downloadCV(BuildContext context) async {
@@ -59,6 +59,7 @@ class DownloadCvButton extends StatelessWidget {
 
   // Function to show a dialog with a message
   void _showDialog(BuildContext context, String title, String content) {
+    print('Affichage du dialogue: $title');
     showDialog(
       context: context,
       builder: (BuildContext context) {

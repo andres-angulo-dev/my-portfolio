@@ -49,7 +49,7 @@ class DrawerComponent extends StatelessWidget {
               ),
             ),
             decoration: BoxDecoration(
-              color: GlobalColors.drawerTitleColor,
+              color: GlobalColors.drawerBackground,
               image: DecorationImage(
                 image: AssetImage(AppImages.drawerBackground), 
                 fit: BoxFit.cover,
