@@ -44,12 +44,11 @@ class AboutMeCard extends StatelessWidget {
                       '🌍 Engagement: Collaborer et apprendre pour évoluer dans un monde numérique en perpétuelle évolution.\n\n'
                       'Pour en savoir plus sur mon expérience profesionnelle, je vous invite à télécharger mon CV ci-dessous 👇' 
                       : 
-                      'Depuis le début de cette aventure, j\'explore quotidiennement cet univers fascinant\n'
-                      'du développement et du code. Une passion grandissante qui me pousse à affiner\n'
-                      'mes compétences et à approfondir ma compréhension de ce domaine riche et\n'
-                      'complexe.\n'
-                      'Mon parcours en développement web full-stack me permet de transformer des\n'
-                      'idées innovantes en solutions numériques.\n\n'
+                      'Depuis le début de cette aventure, j\'explore quotidiennement cet univers fascinant du\n'
+                      'du développement et du code. Une passion grandissante qui me pousse à affiner mes\n'
+                      'compétences et à approfondir ma compréhension de ce domaine riche et complexe.\n'
+                      'Mon parcours en développement web full-stack me permet de transformer des idées\n'
+                      'innovantes en solutions numériques.\n\n'
                       '🔍 Vision: Exploiter des solutions technologiques qui font la différence.\n\n'
                       '🚀 Motivation: L\'innovation constante, guidée par la curiosité et l\'envie de créer.\n\n'
                       '🌍 Engagement: Collaborer et apprendre pour évoluer dans un monde numérique en perpétuelle évolution.\n\n'
@@ -94,7 +93,7 @@ class AboutMeCard extends StatelessWidget {
               child: ClipOval(
                 // Fits the image within the circular shape.
                 child: Transform.translate(
-                  offset: const Offset(25, 5), // Adjust image position.
+                  offset: const Offset(0, 0), // Adjust image position.
                   child: Image.asset(
                     AppImages.profile, // Profile image path.
                     height: 280,
