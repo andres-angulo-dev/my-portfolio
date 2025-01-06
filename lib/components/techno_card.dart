@@ -9,8 +9,9 @@ class TechnoCard extends StatefulWidget {
   final String title;
   final Color color;
   final List<Map<String, dynamic>> technologies;
+  final bool isLastCard;
 
-  const TechnoCard({ super.key, required this.title, required this.color, required this.technologies });
+  const TechnoCard({ super.key, required this.title, required this.color, required this.technologies, this.isLastCard = false});
 
   @override
   TechnoCardState createState() => TechnoCardState();
@@ -45,100 +46,105 @@ class TechnoCardState extends State<TechnoCard> with SingleTickerProviderStateMi
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 10, // Adds a shadow effect to the card.
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12), // Rounded corners for the card.
-      ),
-      color: GlobalColors.technoCardBorder, // Background color of the card.
-      margin: const EdgeInsets.fromLTRB(5, 5, 5, 25), // Margin around the card.
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start horizontally.
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: GlobalColors.cardBackground, // Background color of the container.
-              border: Border.all(color: GlobalColors.technoCardBorder, width: 1), // Border color and width.
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(12),
-                topRight: Radius.circular(12),
-              ), // Rounded corners for the top of the container.
-            ),
-            padding: const EdgeInsets.all(20.0), // Padding inside the container.
-            child: Center(
-              child: Wrap(
-                alignment: WrapAlignment.center, // Center align the wrapped children.
-                spacing: 20.0, // Space between the children horizontally.
-                runSpacing: 20.0, // Space between the children vertically.
-                children: widget.technologies.map((techno) {
-                  return Column(
-                    children: [
-                      VisibilityDetector(
-                        key: Key(techno['label']), 
-                        onVisibilityChanged: (visibilityInfo) {
-                          if (visibilityInfo.visibleFraction > 0.1 && !_hasAnimated) {
-                            _controller.forward(); // Start the animation once
-                            setState(() {
-                              _hasAnimated = true; // Mark the animation as done
-                            });
-                          }
-                        },
-                        child: Column(
-                          children: [
-                            FadeTransition(
-                              opacity: _animation, 
-                              child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: Center(
-                                  child: FaIcon(techno['icon'], size: 40.0, color: techno['color']), // Display the technology icon.
+    return Container(
+      margin: widget.isLastCard 
+        ? const EdgeInsets.only(bottom: 40.0)
+        : EdgeInsets.zero,
+      child: Card(
+        elevation: 10, // Adds a shadow effect to the card.
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12), // Rounded corners for the card.
+        ),
+        color: GlobalColors.technoCardBorder, // Background color of the card.
+        margin: const EdgeInsets.fromLTRB(5, 5, 5, 25), // Margin around the card.
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start horizontally.
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: GlobalColors.cardBackground, // Background color of the container.
+                border: Border.all(color: GlobalColors.technoCardBorder, width: 1), // Border color and width.
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(12),
+                  topRight: Radius.circular(12),
+                ), // Rounded corners for the top of the container.
+              ),
+              padding: const EdgeInsets.all(20.0), // Padding inside the container.
+              child: Center(
+                child: Wrap(
+                  alignment: WrapAlignment.center, // Center align the wrapped children.
+                  spacing: 20.0, // Space between the children horizontally.
+                  runSpacing: 20.0, // Space between the children vertically.
+                  children: widget.technologies.map((techno) {
+                    return Column(
+                      children: [
+                        VisibilityDetector(
+                          key: Key(techno['label']), 
+                          onVisibilityChanged: (visibilityInfo) {
+                            if (visibilityInfo.visibleFraction > 0.1 && !_hasAnimated) {
+                              _controller.forward(); // Start the animation once
+                              setState(() {
+                                _hasAnimated = true; // Mark the animation as done
+                              });
+                            }
+                          },
+                          child: Column(
+                            children: [
+                              FadeTransition(
+                                opacity: _animation, 
+                                child: SizedBox(
+                                  width: 50,
+                                  height: 50,
+                                  child: Center(
+                                    child: FaIcon(techno['icon'], size: 40.0, color: techno['color']), // Display the technology icon.
+                                  ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(height: 6), // Space between the icon and the text.
-                            FadeTransition(
-                              opacity: _animation,
-                              child: Text(
-                                techno['label'],
-                                style: TextStyle(color: GlobalColors.textColor),
+                              const SizedBox(height: 6), // Space between the icon and the text.
+                              FadeTransition(
+                                opacity: _animation,
+                                child: Text(
+                                  techno['label'],
+                                  style: TextStyle(color: GlobalColors.textColor),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  );
-                }).toList(),
-              ),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: GlobalColors.technoCardBorder, width: 3), // Border color and width for the bottom container.
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(12),
-                bottomRight: Radius.circular(12),
-              ), // Rounded corners for the bottom of the container.
-            ),
-            width: double.infinity, // Full width container.
-            height: 30, // Fixed height for the title container.
-            alignment: Alignment.center, // Center align the text.
-            child: FadeTransition(
-              opacity: _animation,
-              child: Text(
-                widget.title,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: GlobalColors.technoTitleColor, //title container
+                      ],
+                    );
+                  }).toList(),
                 ),
               ),
             ),
-          ),
-        ],
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: GlobalColors.technoCardBorder, width: 3), // Border color and width for the bottom container.
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12),
+                ), // Rounded corners for the bottom of the container.
+              ),
+              width: double.infinity, // Full width container.
+              height: 30, // Fixed height for the title container.
+              alignment: Alignment.center, // Center align the text.
+              child: FadeTransition(
+                opacity: _animation,
+                child: Text(
+                  widget.title,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: GlobalColors.technoTitleColor, //title container
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ).ifWeb(
+        kIsWeb ? 475.0 : double.infinity,
       ),
-    ).ifWeb(
-      kIsWeb ? 475.0 : double.infinity,
     );
   }
 }
@@ -164,7 +170,7 @@ class TechnologiesCard extends StatelessWidget {
               {'icon': FontAwesomeIcons.flutter, 'color': GlobalColors.technoIconBlueOpt, 'label': 'Flutter'},
               {'icon': FontAwesomeIcons.html5, 'color': GlobalColors.technoIconOrangeOpt, 'label': 'HTML 5'},
               {'icon': FontAwesomeIcons.css3Alt, 'color': GlobalColors.technoIconBlueOpt, 'label': 'CSS 3'},
-            ],
+            ], 
           ),
           TechnoCard(
             title: 'BACKEND',
@@ -180,6 +186,7 @@ class TechnologiesCard extends StatelessWidget {
             technologies: [
               {'icon': FontAwesomeIcons.github, 'color': GlobalColors.technoIconBlack, 'label': 'GitHub'},
             ],
+          isLastCard: true,
           ),
         ],
       )
@@ -211,6 +218,7 @@ class TechnologiesCard extends StatelessWidget {
             technologies: [
               {'icon': FontAwesomeIcons.github, 'color': GlobalColors.technoIconBlack, 'label': 'GitHub'},
             ],
+            isLastCard: true,
           ),
         ],
       );
@@ -227,7 +235,7 @@ extension on Widget {
 }
 
 
-//// With enlargement / contraction animation
+//// With enlargement/contraction animation
 // import 'package:flutter/material.dart';
 // import 'package:flutter/foundation.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
