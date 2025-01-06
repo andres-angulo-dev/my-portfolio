@@ -78,7 +78,7 @@ class SkillsCardState extends State<SkillsCard> with SingleTickerProviderStateMi
               return VisibilityDetector(
                 key: Key('skills-card-visibility-$index'),
                 onVisibilityChanged: (VisibilityInfo info) {
-                  if (info.visibleFraction > 0.5 && index == 0) {
+                  if (info.visibleFraction > 0.1 && index == 0) {
                     _startAnimation();
                   }
                 },
