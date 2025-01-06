@@ -1,42 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:my_portfolio/components/drawer_component.dart';
-import 'package:my_portfolio/screens/contact_screen.dart';
+import 'package:integration_test/integration_test.dart';
+import 'package:andres_angulo_portfolio/main.dart' as app;
+import 'dart:developer' as developer;
 
 void main() {
-  testWidgets('Test the Contact button in the Drawer', (WidgetTester tester) async {
-    // Build the DrawerComponent directly
-    await tester.pumpWidget(MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Test Drawer')),
-        body: Center(child: Text('Home Screen')),
-        drawer: DrawerComponent(
-          scrollToSection: (key) {},
-          aboutKey: GlobalKey(),
-          projectsKey: GlobalKey(),
-          skillsKey: GlobalKey(),
-          technoKey: GlobalKey(),
-        ),
-      ),
-      routes: {
-        '/contact': (context) => ContactScreen(),
-      },
-    ));
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-    // Open the Drawer using the navigation menu icon
-    await tester.tap(find.byIcon(Icons.menu));
+  testWidgets('test d\'intégration simple', (WidgetTester tester) async {
+    developer.log('App démarrée');
+    app.main(); // Lancez l'application
+
+    await tester.pumpAndSettle(); // Attendez que l'application se stabilise
+    developer.log('App stabilisée');
+
+    // Vérifiez que l'écran d'accueil est affiché
+    expect(find.text('Accueil'), findsOneWidget);
+    developer.log('Écran d\'accueil trouvé');
+
+    // Appuyez sur le bouton "Télécharger CV"
+    final Finder boutonCv = find.text('Télécharger mon CV');
+    await tester.tap(boutonCv);
+    await tester.pumpAndSettle(); // Attendez que l'interface se stabilise après l'action
+    developer.log('Bouton "Télécharger mon CV" tapé');
+
+    // Ouvrez le menu de navigation et naviguez vers l'écran de contact
+    await tester.tap(find.byIcon(Icons.contact_mail));
     await tester.pumpAndSettle();
-    print('Drawer opened');
-
-    // Find the Contact button and tap on it
-    final Finder contactButton = find.text('Contact');
-    expect(contactButton, findsOneWidget);
-    await tester.tap(contactButton);
-    await tester.pumpAndSettle();
-    print('Contact button tapped');
-
-    // Verify that the navigation to the Contact screen is performed
-    expect(find.byType(ContactScreen), findsOneWidget);
-    print('Navigation to Contact screen performed');
+    expect(find.text('Contact'), findsOneWidget);
+    developer.log('Écran de contact trouvé');
   });
 }

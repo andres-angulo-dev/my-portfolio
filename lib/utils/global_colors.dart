@@ -4,6 +4,7 @@ class GlobalColors {
   // Primary and secondary background colors
   static const Color primaryBackground = Color(0xFFFFB300); 
   static const Color secondaryBackground = Color(0xFFFFB300); 
+  static const Color tertiaryBackground = Color(0xFFA3B18A);
 
   // AppBar
   static const Color appBarButtonBackground = Color(0xFF588157); 

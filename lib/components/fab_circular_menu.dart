@@ -46,7 +46,7 @@ class FabCircularMenu extends StatelessWidget {
         IconButton(
           icon: FaIcon(FontAwesomeIcons.github, color: GlobalColors.circularIcons), // GitHub icon button.
           onPressed: () async {
-            final url = 'https://github.com/AFAS75';
+            const url = 'https://github.com/andres-angulo-dev';
             try {
               await launchUrl(Uri.parse(url)); // Launch GitHub URL.
             } catch (error) {

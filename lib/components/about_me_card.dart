@@ -8,53 +8,75 @@ class AboutMeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 10, // Adds a shadow effect.
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12), // Rounded corners.
-      ),
-      color: GlobalColors.cardBackground, // Custom background color.
-      margin: const EdgeInsets.fromLTRB(10, 0, 10, 40),
-      child: SingleChildScrollView(
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 40),
       child: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(15.0), // Internal padding.
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center, // Center items horizontally.
-              children: [
-                Text(
-                  'Depuis le début de cette aventure,\n'
-                  'j\'explore quotidiennement cet\n'
-                  'univers fascinant du développe-\n'
-                  'ment et du code. Une passion\n'
-                  'grandissante qui me pousse à\n'
-                  'affiner mes compétences et à\n'
-                  'approfondir ma compréhension de ce domaine riche et complexe. '
-                  'Mon parcours en développement web full-stack me permet de transformer des idées innovantes en solutions numériques. Je vous invite à découvrir certains de mes projets.\n\n'
-                  '🔍 Vision: Apporter des solutions technologiques qui font la différence.\n\n'
-                  '🚀 Motivation: L\'innovation constante, guidée par la curiosité et l\'envie de créer.\n\n'
-                  '🌍 Engagement: Collaborer et apprendre pour évoluer dans un monde numérique en perpétuelle évolution.',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: GlobalColors.textColor, // Text color for readability.
-                  ),
-                ),
-                const SizedBox(height: 20),
-                DownloadCvButton(),
-              ],
+          // Background with oblique lines
+          Positioned.fill(
+            child: CustomPaint(
+              painter: screenWidth < 768 ? BackgroundPainterMobile() : BackgroundPainterWeb(),
             ),
           ),
+          // Main content
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      screenWidth < 768 ? 
+                      'Depuis le début de cette aventure,\n'
+                      'j\'explore quotidiennement cet\n'
+                      'univers fascinant du développe-\n'
+                      'ment et du code. Une passion\n'
+                      'grandissante qui me pousse à\n'
+                      'affiner mes compétences et à\n'
+                      'approfondir ma compréhension de ce domaine riche et complexe. '
+                      'Mon parcours en développement web full-stack me permet de transformer des idées innovantes en solutions numériques.\n\n'
+                      '🔍 Vision: Exploiter des solutions technologiques qui font la différence.\n\n'
+                      '🚀 Motivation: L\'innovation constante, guidée par la curiosité et l\'envie de créer.\n\n'
+                      '🌍 Engagement: Collaborer et apprendre pour évoluer dans un monde numérique en perpétuelle évolution.\n\n'
+                      'Pour en savoir plus sur mon expérience profesionnelle, je vous invite à télécharger mon CV ci-dessous 👇' 
+                      : 
+                      'Depuis le début de cette aventure, j\'explore quotidiennement cet univers fascinant\n'
+                      'du développement et du code. Une passion grandissante qui me pousse à affiner\n'
+                      'mes compétences et à approfondir ma compréhension de ce domaine riche et\n'
+                      'complexe.\n'
+                      'Mon parcours en développement web full-stack me permet de transformer des\n'
+                      'idées innovantes en solutions numériques.\n\n'
+                      '🔍 Vision: Exploiter des solutions technologiques qui font la différence.\n\n'
+                      '🚀 Motivation: L\'innovation constante, guidée par la curiosité et l\'envie de créer.\n\n'
+                      '🌍 Engagement: Collaborer et apprendre pour évoluer dans un monde numérique en perpétuelle évolution.\n\n'
+                      'Pour en savoir plus sur mon expérience profesionnelle, je vous invite à télécharger mon CV.',
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: GlobalColors.textColor, // Text color for readability.
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    DownloadCvButton(),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          screenWidth < 768 ?
           Positioned(
             top: 10,
             right: 3, // Top-right corner positioning.
             child: CircleAvatar(
               radius: 70, // Size of the avatar.
-              backgroundColor: Color(0xFFA3B18A), // Background color.
+              backgroundColor: GlobalColors.tertiaryBackground, // Background color.
               child: ClipOval(
                 // Fits the image within the circular shape.
                 child: Transform.translate(
-                  offset: const Offset(25, 5), // Adjust image position.
+                  offset: const Offset(0, 0), // Adjust image position.
                   child: Image.asset(
                     AppImages.profile, // Profile image path.
                     height: 180,
@@ -63,11 +85,105 @@ class AboutMeCard extends StatelessWidget {
                 ),
               ),
             ),
-          ),
+          ) :
+          Positioned(
+            right: 40.0, // Right positioning.
+            child: CircleAvatar(
+              radius: 110, // Size of the avatar.
+              backgroundColor: GlobalColors.tertiaryBackground, // Background color.
+              child: ClipOval(
+                // Fits the image within the circular shape.
+                child: Transform.translate(
+                  offset: const Offset(25, 5), // Adjust image position.
+                  child: Image.asset(
+                    AppImages.profile, // Profile image path.
+                    height: 280,
+                    fit: BoxFit.cover, // Ensures the image covers the avatar area.
+                  ),
+                ),
+              ),
+            ),
+          )
+          ,
         ],
-      ),
-
-      ) // External margin.
+      ), 
     );
+  }
+}
+
+class BackgroundPainterWeb extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Paint for the shadow
+    Paint shadowPaint = Paint()
+      ..color = const Color.fromARGB(255, 0, 0, 0).withOpacity(0.4) // Shadow color with opacity
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 10); // Blur effect for the shadow
+
+    // Create the path for the shadow
+    Path shadowPath = Path()
+      // ..moveTo(0, size.height * 0.01) // Corner top-left
+      // ..lineTo(size.width, size.height * -0.12) // Corner top-right
+      ..lineTo(size.width, size.height * 1.13) // Corner bottom-left
+      ..lineTo(0, size.height * 0.95) // Corner bottom-left
+      ..close();
+
+    canvas.drawPath(shadowPath, shadowPaint); // Draw the shadow
+
+    // Paint for the white background
+    Paint paint = Paint()..color = const Color.fromARGB(255, 255, 255, 255);
+
+    // Create a background with oblique lines and larger size
+    Path path = Path()
+      ..moveTo(0, size.height * 0.01) // Corner top-left
+      ..lineTo(size.width, size.height * -0.12) // Corner top-right
+      ..lineTo(size.width, size.height * 1.13) // Corner bottom-left
+      ..lineTo(0, size.height * 0.95) // Corner bottom-left
+      ..close();
+
+    canvas.drawPath(path, paint); // Draw the main path
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
+
+
+class BackgroundPainterMobile extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Paint for the shadow
+    Paint shadowPaint = Paint()
+      ..color = const Color.fromARGB(255, 0, 0, 0).withOpacity(0.4) // Shadow color with opacity
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 10); // Blur effect for the shadow
+
+    // Create the path for the shadow
+    Path shadowPath = Path()
+      // ..moveTo(0, size.height * 0.0) // Corner top-left
+      // ..lineTo(size.width, size.height * 0.0) // Corner top-right
+      ..lineTo(size.width, size.height * 1.0) // Corner bottom-right
+      ..lineTo(0, size.height * 1.0) // Corner bottom-left
+      ..close();
+
+    canvas.drawPath(shadowPath, shadowPaint); // Draw the shadow
+
+    // Paint for the white background
+    Paint paint = Paint()..color = const Color.fromARGB(255, 255, 255, 255);
+
+    // Create a background with oblique lines and larger size
+    Path path = Path()
+      ..moveTo(0, size.height * 0.0) // Corner top-left
+      ..lineTo(size.width, size.height * 0.0) // Corner top-right
+      ..lineTo(size.width, size.height * 1.0) // Corner bottom-right
+      ..lineTo(0, size.height * 1.0) // Corner bottom-left
+      ..close();
+
+    canvas.drawPath(path, paint); // Draw the main path
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }

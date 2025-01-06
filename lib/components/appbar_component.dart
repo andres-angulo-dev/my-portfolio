@@ -163,7 +163,8 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.of(context).size;
+
     String backgroundImage = screenSize.width < 780 ? AppImages.appbarBackgroundMobile : AppImages.appbarBackgroundWeb;
 
     return SliverAppBar(
@@ -195,10 +196,12 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
   }
 
   Widget _buildAnimatedText() {
+  final screenWidth = MediaQuery.of(context).size.width;
+  
     return Stack(
       children: [
         Positioned(
-          left: 30,
+          left: screenWidth < 768 ? 30 : screenWidth * 0.20,
           top: MediaQuery.of(context).size.height / 2 - 52,
           child: FadeTransition(
             opacity: _fadeAnimation,
@@ -215,7 +218,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
           ),
         ),
         Positioned(
-          left: 30,
+          left: screenWidth < 768 ? 30 : screenWidth * 0.20,
           top: MediaQuery.of(context).size.height / 2 - 22,
           child: Row(
             children: List.generate(name.length, (index) {
@@ -239,7 +242,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
           ),
         ),
         Positioned(
-          left: 30,
+          left: screenWidth < 768 ? 30 : screenWidth * 0.20,
           top: MediaQuery.of(context).size.height / 2 + 12,
           child: FadeTransition(
             opacity: _fadeAnimation,

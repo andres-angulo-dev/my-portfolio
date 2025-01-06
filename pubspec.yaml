@@ -1,5 +1,5 @@
-name: my_portfolio
-description: "My portfolio"
+name: andres_angulo_portfolio
+description: "Andrés Angulo Portfolio"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -53,6 +53,8 @@ dev_dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.14.2
   build_runner: ^2.4.13
+  integration_test:
+    sdk: flutter
   
   
 

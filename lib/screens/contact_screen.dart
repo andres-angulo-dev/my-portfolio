@@ -85,29 +85,44 @@ class ContactScreenState extends State<ContactScreen> {
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: FormContactComponent(
-            formKey: _formKey,
-            firstNameController: _firstNameController,
-            lastNameController: _lastNameController,
-            emailController: _emailController,
-            companyController: _companyController,
-            phoneController: _phoneController,
-            messageController: _messageController,
-            isSending: _isSending,
-            sendEmail: () => sendEmail(
-              formKey: _formKey,
-              context: context,
-              firstNameController: _firstNameController,
-              lastNameController: _lastNameController,
-              emailController: _emailController,
-              companyController: _companyController,
-              phoneController: _phoneController,
-              messageController: _messageController,
-              showSuccessDialog: _showSuccessDialog,
-              setIsSending: (value) {
-                setState(() {
-                  _isSending = value;
-                });
+          child: Center(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                double maxWidth;
+                if (constraints.maxWidth > 600) {
+                  maxWidth = 600;
+                } else {
+                  maxWidth = constraints.maxWidth;
+                }
+                return SizedBox(
+                  width: maxWidth,
+                  child: FormContactComponent(
+                    formKey: _formKey,
+                    firstNameController: _firstNameController,
+                    lastNameController: _lastNameController,
+                    emailController: _emailController,
+                    companyController: _companyController,
+                    phoneController: _phoneController,
+                    messageController: _messageController,
+                    isSending: _isSending,
+                    sendEmail: () => sendEmail(
+                      formKey: _formKey,
+                      context: context,
+                      firstNameController: _firstNameController,
+                      lastNameController: _lastNameController,
+                      emailController: _emailController,
+                      companyController: _companyController,
+                      phoneController: _phoneController,
+                      messageController: _messageController,
+                      showSuccessDialog: _showSuccessDialog,
+                      setIsSending: (value) {
+                        setState(() {
+                          _isSending = value;
+                        });
+                      },
+                    ),
+                  ),
+                );
               },
             ),
           ),

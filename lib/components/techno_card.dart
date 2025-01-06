@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import 'dart:async';
@@ -167,6 +168,8 @@ class TechnoCardState extends State<TechnoCard> with SingleTickerProviderStateMi
           ),
         ],
       ),
+    ).ifWeb(
+      kIsWeb ? 475.0 : double.infinity,
     );
   }
 }
@@ -177,36 +180,79 @@ class TechnologiesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color backgroundColorTitle = Colors.red; // Background color for the title sections.
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start horizontally.
-      children: [
-        TechnoCard(
-          title: 'FRONTEND',
-          color: backgroundColorTitle,
-          technologies: [
-            {'icon': FontAwesomeIcons.react, 'color': GlobalColors.technoIconBlue, 'label': 'React'},
-            {'icon': FontAwesomeIcons.squareJs, 'color': GlobalColors.technoIconYellow, 'label': 'JS'},
-            {'icon': FontAwesomeIcons.flutter, 'color': GlobalColors.technoIconBlueOpt, 'label': 'Flutter'},
-            {'icon': FontAwesomeIcons.html5, 'color': GlobalColors.technoIconOrangeOpt, 'label': 'HTML 5'},
-            {'icon': FontAwesomeIcons.css3Alt, 'color': GlobalColors.technoIconBlueOpt, 'label': 'CSS 3'},
-          ],
-        ),
-        TechnoCard(
-          title: 'BACKEND',
-          color: backgroundColorTitle,
-          technologies: [
-            {'icon': FontAwesomeIcons.node, 'color': GlobalColors.technoIconGreen, 'label': 'Node'},
-            {'icon': FontAwesomeIcons.database, 'color': GlobalColors.technoIconBlack, 'label': 'MongoDB'},
-          ],
-        ),
-        TechnoCard(
-          title: 'AUTRES',
-          color: backgroundColorTitle,
-          technologies: [
-            {'icon': FontAwesomeIcons.github, 'color': GlobalColors.technoIconBlack, 'label': 'GitHub'},
-          ],
-        ),
-      ],
+    return kIsWeb  
+      ? Wrap(
+        spacing: 10.0,
+        runSpacing: 10.0,
+        alignment: WrapAlignment.center,
+        children: [
+          TechnoCard(
+            title: 'FRONTEND',
+            color: backgroundColorTitle,
+            technologies: [
+              {'icon': FontAwesomeIcons.react, 'color': GlobalColors.technoIconBlue, 'label': 'React'},
+              {'icon': FontAwesomeIcons.squareJs, 'color': GlobalColors.technoIconYellow, 'label': 'JS'},
+              {'icon': FontAwesomeIcons.flutter, 'color': GlobalColors.technoIconBlueOpt, 'label': 'Flutter'},
+              {'icon': FontAwesomeIcons.html5, 'color': GlobalColors.technoIconOrangeOpt, 'label': 'HTML 5'},
+              {'icon': FontAwesomeIcons.css3Alt, 'color': GlobalColors.technoIconBlueOpt, 'label': 'CSS 3'},
+            ],
+          ),
+          TechnoCard(
+            title: 'BACKEND',
+            color: backgroundColorTitle,
+            technologies: [
+              {'icon': FontAwesomeIcons.node, 'color': GlobalColors.technoIconGreen, 'label': 'Node'},
+              {'icon': FontAwesomeIcons.database, 'color': GlobalColors.technoIconBlack, 'label': 'MongoDB'},
+            ],
+          ),
+          TechnoCard(
+            title: 'AUTRES',
+            color: backgroundColorTitle,
+            technologies: [
+              {'icon': FontAwesomeIcons.github, 'color': GlobalColors.technoIconBlack, 'label': 'GitHub'},
+            ],
+          ),
+        ],
+      )
+      : Column(
+        crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start horizontally.
+        children: [
+          TechnoCard(
+            title: 'FRONTEND',
+            color: backgroundColorTitle,
+            technologies: [
+              {'icon': FontAwesomeIcons.react, 'color': GlobalColors.technoIconBlue, 'label': 'React'},
+              {'icon': FontAwesomeIcons.squareJs, 'color': GlobalColors.technoIconYellow, 'label': 'JS'},
+              {'icon': FontAwesomeIcons.flutter, 'color': GlobalColors.technoIconBlueOpt, 'label': 'Flutter'},
+              {'icon': FontAwesomeIcons.html5, 'color': GlobalColors.technoIconOrangeOpt, 'label': 'HTML 5'},
+              {'icon': FontAwesomeIcons.css3Alt, 'color': GlobalColors.technoIconBlueOpt, 'label': 'CSS 3'},
+            ],
+          ),
+          TechnoCard(
+            title: 'BACKEND',
+            color: backgroundColorTitle,
+            technologies: [
+              {'icon': FontAwesomeIcons.node, 'color': GlobalColors.technoIconGreen, 'label': 'Node'},
+              {'icon': FontAwesomeIcons.database, 'color': GlobalColors.technoIconBlack, 'label': 'MongoDB'},
+            ],
+          ),
+          TechnoCard(
+            title: 'AUTRES',
+            color: backgroundColorTitle,
+            technologies: [
+              {'icon': FontAwesomeIcons.github, 'color': GlobalColors.technoIconBlack, 'label': 'GitHub'},
+            ],
+          ),
+        ],
+      );
+  }
+}
+
+extension on Widget {
+  Widget ifWeb(double width) {
+    return SizedBox(
+      width: width,
+      child: this,
     );
   }
 }

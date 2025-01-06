@@ -18,7 +18,7 @@ class MyPortfolioApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mon portfolio',
+      title: 'Andrés Angulo Portfolio',
       theme: ThemeData(primarySwatch: Colors.green), 
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
