@@ -22,7 +22,7 @@ class GlobalColors {
   static const Color appBarTextColor = Colors.white; 
   static const Color titleColor = Colors.white; 
   static const Color textColor = Colors.black; 
-  static const Color projectsTitleColor = Colors.white; 
+  static const Color projectsTitleColor = Color.fromARGB(255, 0, 0, 0); 
   static const Color drawerTitleColor = Colors.white;
   static const Color technoTitleColor = Colors.white;
 

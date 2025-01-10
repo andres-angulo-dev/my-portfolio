@@ -90,15 +90,11 @@ flutter:
     - assets/drawer_background.png
     - assets/my_portfolio.png
     - assets/cv_Andrés_Angulo.pdf
-    - assets/code.png
-    - assets/shapes.riv
-    - assets/shapes.png
     - assets/animation_projects_card.json
     - assets/home_web.json
     - assets/main_scene.json
     - assets/home_mobile.json
     - assets/button.json
-    # - assets/works.riv
     - .env
 
 
