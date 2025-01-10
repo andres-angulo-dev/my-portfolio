@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import './download_cv_button.dart';
 import '../utils/global_colors.dart';
 import '../utils/global_others.dart';
@@ -58,8 +59,25 @@ class AboutMeCard extends StatelessWidget {
                         color: GlobalColors.textColor, // Text color for readability.
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    DownloadCvButton(),
+                    Container(
+                      alignment: Alignment(0, 0),
+                      width: 250,
+                      height: 100,
+                      child: Stack(
+                        alignment: AlignmentDirectional.center,
+                        children: [
+                          DownloadCvButton(),
+                          Container(
+                            alignment: Alignment(0.85, -0.5),
+                            child: Lottie.asset(
+                            "assets/button.json",
+                              width: 50,
+                              height: 50, 
+                            ),
+                          )
+                        ],
+                      )
+                    )
                   ],
                 ),
               ),
@@ -85,8 +103,9 @@ class AboutMeCard extends StatelessWidget {
               ),
             ),
           ) :
-          Positioned(
-            right: 40.0, // Right positioning.
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(left: 700),
             child: CircleAvatar(
               radius: 110, // Size of the avatar.
               backgroundColor: GlobalColors.tertiaryBackground, // Background color.

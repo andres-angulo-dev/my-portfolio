@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html; // Import dart:html for web download
 
 class DownloadCvButton extends StatelessWidget {

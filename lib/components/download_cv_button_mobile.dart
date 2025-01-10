@@ -59,7 +59,6 @@ class DownloadCvButton extends StatelessWidget {
 
   // Function to show a dialog with a message
   void _showDialog(BuildContext context, String title, String content) {
-    print('Affichage du dialogue: $title');
     showDialog(
       context: context,
       builder: (BuildContext context) {

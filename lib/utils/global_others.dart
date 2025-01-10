@@ -6,4 +6,5 @@ class AppImages {
   static const String cvAndresAngulo = 'assets/cv_Andrés_Angulo.pdf';
   static const String myPortfolioProject = 'assets/my_portfolio.png';
   static const String yourWeatherProject = 'assets/your_weather.png';
+  static const String animatedBackground = 'assets/code.png';
 }

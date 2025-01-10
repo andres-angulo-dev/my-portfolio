@@ -1,3 +1,8 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "dart.flutterSdkPaths": [
+        "~/Desktop/dev/flutter",
+        "~/Desktop/dev/flutter_v3.27.0"
+    ],
+    "dart.flutterSdkPath": "~/Desktop/dev/flutter",
 }

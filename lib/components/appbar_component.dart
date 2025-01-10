@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/global_colors.dart';
-import '../utils/global_others.dart';
+import '../components/animated_background_appbar.dart';
 
 class AppBarComponent extends StatefulWidget {
   final VoidCallback scrollToAboutSection;
@@ -27,7 +27,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
   late final List<AnimationController> _letterControllers;
   late final List<Animation<double>> _letterAnimations;
 
-  final String name = 'WELCOME';
+  final String name = 'BIENVENUE';
 
   @override
   void initState() {
@@ -87,7 +87,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
       curve: Curves.easeInOut,
     ));
 
-    // Letter animations for "WELCOME"
+    // Letter animations for "BIENVENUE"
     _letterControllers = List.generate(name.length, (index) {
       return AnimationController(
         duration: Duration(milliseconds: 2000 + index * 100),
@@ -165,28 +165,21 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    String backgroundImage = screenSize.width < 780 ? AppImages.appbarBackgroundMobile : AppImages.appbarBackgroundWeb;
-
     return SliverAppBar(
       pinned: true,
       backgroundColor: GlobalColors.primaryBackground,
-      expandedHeight: MediaQuery.of(context).size.height,
+      expandedHeight: screenSize.height,
       iconTheme: IconThemeData(color: GlobalColors.appBarTextColor),
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: [
-            SlideTransition(
+           SlideTransition(
               position: _slideAnimationBackground,
               child: FadeTransition(
                 opacity: _fadeAnimationBackground,
-                child: Image.asset(
-                  backgroundImage,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                  height: double.infinity,
-                ),
+                child: AnimatedBackgroundAppbar(),
               ),
-            ),
+           ),
             _buildAnimatedText(),
             _buildAnimatedButton(),
           ],
@@ -202,16 +195,16 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
       children: [
         Positioned(
           left: screenWidth < 768 ? 30 : screenWidth * 0.20,
-          top: MediaQuery.of(context).size.height / 2 - 52,
+          top: screenWidth < 768 ? MediaQuery.of(context).size.height / 2 - 52 : MediaQuery.of(context).size.height / 2 - 68,
           child: FadeTransition(
             opacity: _fadeAnimation,
             child: SlideTransition(
               position: _offsetAnimationBis,
               child: Text(
-                'Bienvenue',
+                'Welcome',
                 style: TextStyle(
                   color: GlobalColors.appBarTextColor,
-                  fontSize: 20.0,
+                  fontSize: screenWidth < 768 ? 20.0 : 50.0,
                 ),
               ),
             ),
@@ -233,7 +226,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
                     name[index],
                     style: TextStyle(
                       color: GlobalColors.appBarTextColor,
-                      fontSize: 24,
+                      fontSize: screenWidth < 768 ? 24.0 : 58.0,
                     ),
                   ),
                 ),
@@ -243,7 +236,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
         ),
         Positioned(
           left: screenWidth < 768 ? 30 : screenWidth * 0.20,
-          top: MediaQuery.of(context).size.height / 2 + 12,
+          top: screenWidth < 768 ? MediaQuery.of(context).size.height / 2 + 12 : MediaQuery.of(context).size.height / 2 + 38,
           child: FadeTransition(
             opacity: _fadeAnimation,
             child: SlideTransition(
@@ -252,7 +245,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
                 'Bienvenido',
                 style: TextStyle(
                   color: GlobalColors.appBarTextColor,
-                  fontSize: 20.0,
+                  fontSize: screenWidth < 768 ? 20.0 : 50.0,
                 ),
               ),
             ),
