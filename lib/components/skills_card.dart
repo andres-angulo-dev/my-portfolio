@@ -66,7 +66,7 @@ class SkillsCardState extends State<SkillsCard> with SingleTickerProviderStateMi
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 15.0), // Margin at the bottom of the container.
+      margin: const EdgeInsets.only(bottom: 20.0), // Margin at the bottom of the container.
       child: kIsWeb
         ? Wrap(
             spacing: 10.0,

@@ -68,7 +68,7 @@ class AboutMeCard extends StatelessWidget {
                         children: [
                           DownloadCvButton(),
                           Container(
-                            alignment: Alignment(0.85, -0.5),
+                            alignment: screenWidth < 748 ? Alignment(0.85, -0.5) : Alignment(1.05, -0.7),
                             child: Lottie.asset(
                             "assets/button.json",
                               width: 50,

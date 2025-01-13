@@ -17,10 +17,14 @@ class _AnimatedBackgroundHomeScreenState extends State<AnimatedBackgroundHomeScr
     return Stack(
       children: [
         screenWidth < 768 ? 
-        Positioned(
-          child: Lottie.asset(
-            "assets/home_mobile.json",
-            reverse: true,
+        SizedBox(
+          child: Positioned(
+            child: Lottie.asset(
+              "assets/home_mobile.json",
+                          width: 3000,
+              height: 1200,
+              reverse: true,
+            ),
           ),
         )
         :

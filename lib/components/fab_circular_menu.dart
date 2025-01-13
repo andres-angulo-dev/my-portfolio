@@ -10,12 +10,14 @@ class FabCircularMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return FabCircularMenuPlus(
       ringColor: GlobalColors.circularBackground.withOpacity(0.78), // Ring color with transparency.
-      ringDiameter: 200.0, // Diameter of the circular menu.
-      ringWidth: 40.0, // Width of the ring.
-      fabSize: 54.0, // Size of the Floating Action Button.
-      fabElevation: 8.0, // Elevation of the Floating Action Button.
+      ringDiameter: screenWidth < 768 ? 200.0 : 250.0, // Diameter of the circular menu.
+      ringWidth: screenWidth < 768 ? 40.0 : 50.0, // Width of the ring.
+      fabSize: screenWidth < 768 ? 54.0 : 64.0, // Size of the Floating Action Button.
+      fabElevation: screenWidth < 768 ? 8.0 : 10.0, // Elevation of the Floating Action Button.
       fabIconBorder: CircleBorder(), // Border shape for the Floating Action Button icon.
       fabColor: GlobalColors.ringBackground, // Color of the Floating Action Button.
       fabOpenIcon: FaIcon(

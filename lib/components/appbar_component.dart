@@ -169,7 +169,10 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
       pinned: true,
       backgroundColor: GlobalColors.primaryBackground,
       expandedHeight: screenSize.height,
-      iconTheme: IconThemeData(color: GlobalColors.appBarTextColor),
+      iconTheme: IconThemeData(
+        color: GlobalColors.appBarTextColor,
+        size: screenSize.width < 768 ? null : 30.0,
+      ),
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: [
@@ -212,7 +215,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
         ),
         Positioned(
           left: screenWidth < 768 ? 30 : screenWidth * 0.20,
-          top: MediaQuery.of(context).size.height / 2 - 52,
+          top: screenWidth < 768 ? MediaQuery.of(context).size.height / 2 - 54 : MediaQuery.of(context).size.height / 2 - 21,
           child: Row(
             children: List.generate(name.length, (index) {
               return FadeTransition(
@@ -256,9 +259,11 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
   }
   
   Widget _buildAnimatedButton() {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Positioned(
       bottom: 90,
-      left: MediaQuery.of(context).size.width / 2 - 100,
+      left: screenWidth / 2 - 100,
       child: Stack(
         children: [
           AnimatedBuilder(
@@ -272,8 +277,8 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
                     return Opacity(
                       opacity: _fadeAnimationButton.value,
                       child: SizedBox(
-                        width: 200,
-                        height: 25,
+                        width: screenWidth < 768 ? 200 : 250,
+                        height: screenWidth < 768 ? 25 : 31.25,
                         child: MaterialButton(
                           color: GlobalColors.appBarButtonBackground,
                           shape: RoundedRectangleBorder(
