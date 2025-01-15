@@ -47,6 +47,7 @@ dependencies:
   mesh_gradient: ^1.3.8
   rive: ^0.13.20
   lottie: ^3.2.0
+  video_player: ^2.9.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -95,6 +96,8 @@ flutter:
     - assets/main_scene.json
     - assets/home_mobile.json
     - assets/button.json
+    - assets/animation_web.gif
+    - assets/animation_mobile.gif
     - .env
 
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../utils/global_colors.dart';
 import '../components/animated_background_appbar.dart';
+import 'animated_background_appbar_center.dart';
+
 
 class AppBarComponent extends StatefulWidget {
   final VoidCallback scrollToAboutSection;
@@ -176,6 +178,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: [
+            AnimatedBackgroundAppBarCenter(),
            SlideTransition(
               position: _slideAnimationBackground,
               child: FadeTransition(
@@ -197,7 +200,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
     return Stack(
       children: [
         Positioned(
-          left: screenWidth < 768 ? 30 : screenWidth * 0.20,
+          left: screenWidth < 768 ? 30 : screenWidth * 0.18,
           top: screenWidth < 768 ? MediaQuery.of(context).size.height / 2 - 82 : MediaQuery.of(context).size.height / 2 - 68,
           child: FadeTransition(
             opacity: _fadeAnimation,
@@ -214,7 +217,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
           ),
         ),
         Positioned(
-          left: screenWidth < 768 ? 30 : screenWidth * 0.20,
+          left: screenWidth < 768 ? 30 : screenWidth * 0.18,
           top: screenWidth < 768 ? MediaQuery.of(context).size.height / 2 - 54 : MediaQuery.of(context).size.height / 2 - 21,
           child: Row(
             children: List.generate(name.length, (index) {
@@ -238,7 +241,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
           ),
         ),
         Positioned(
-          left: screenWidth < 768 ? 30 : screenWidth * 0.20,
+          left: screenWidth < 768 ? 30 : screenWidth * 0.18,
           top: screenWidth < 768 ? MediaQuery.of(context).size.height / 2 - 22 : MediaQuery.of(context).size.height / 2 + 38,
           child: FadeTransition(
             opacity: _fadeAnimation,
