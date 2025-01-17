@@ -200,7 +200,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
     return Stack(
       children: [
         Positioned(
-          left: screenWidth < 768 ? 30 : screenWidth * 0.18,
+          left: screenWidth < 768 ? 30 : screenWidth * 0.16,
           top: screenWidth < 768 ? MediaQuery.of(context).size.height / 2 - 82 : MediaQuery.of(context).size.height / 2 - 68,
           child: FadeTransition(
             opacity: _fadeAnimation,
@@ -217,7 +217,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
           ),
         ),
         Positioned(
-          left: screenWidth < 768 ? 30 : screenWidth * 0.18,
+          left: screenWidth < 768 ? 30 : screenWidth * 0.16,
           top: screenWidth < 768 ? MediaQuery.of(context).size.height / 2 - 54 : MediaQuery.of(context).size.height / 2 - 21,
           child: Row(
             children: List.generate(name.length, (index) {
@@ -241,7 +241,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
           ),
         ),
         Positioned(
-          left: screenWidth < 768 ? 30 : screenWidth * 0.18,
+          left: screenWidth < 768 ? 30 : screenWidth * 0.16,
           top: screenWidth < 768 ? MediaQuery.of(context).size.height / 2 - 22 : MediaQuery.of(context).size.height / 2 + 38,
           child: FadeTransition(
             opacity: _fadeAnimation,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import './screens/home_screen.dart';
+import './screens/splash_screen.dart';
 import './screens/contact_screen.dart';
 
 Future<void> main() async {
@@ -27,7 +27,7 @@ class MyPortfolioApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) =>  HomeScreen(),
+        '/': (context) =>  SplashScreen(),
         '/contact': (context) => const ContactScreen(),
       },
     );
