@@ -98,6 +98,7 @@ flutter:
     - assets/animation_web.gif
     - assets/animation_mobile.gif
     - assets/animation_splash_screen.json
+    - assets/my_logo.riv
     - .env
 
 

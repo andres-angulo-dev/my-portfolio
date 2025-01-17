@@ -178,34 +178,38 @@ class _ProjectsCardState extends State<ProjectsCard> {
   void _showTechLabel(PointerEvent event, Map<String, dynamic> tech) {
     final overlay = Overlay.of(context);
     _overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        left: event.position.dx,
-        top: event.position.dy - 40,
-        child: Material(
-          color: Colors.transparent,
-          child: AnimatedOpacity(
-            opacity: 1.0,
-            duration: Duration(milliseconds: 300), // Fade in duration
-            child: Container(
-              alignment: Alignment(0, 0),
-              width: 200,
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: GlobalColors.tertiaryBackground,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Text(
-                tech['label']!,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: GlobalColors.textColor,
-                  fontWeight: FontWeight.w700,
+      builder: (context) => Stack(
+       children: [
+        Positioned(
+          left: event.position.dx,
+          top: event.position.dy - 40,
+          child: Material(
+            color: Colors.transparent,
+            child: AnimatedOpacity(
+              opacity: 1.0,
+              duration: Duration(milliseconds: 300), // Fade in duration
+              child: Container(
+                alignment: Alignment(0, 0),
+                width: 200,
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: GlobalColors.tertiaryBackground,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  tech['label']!,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: GlobalColors.textColor,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),
           ),
         ),
-      ),
+       ]
+      )
     );
       overlay.insert(_overlayEntry!);
   }

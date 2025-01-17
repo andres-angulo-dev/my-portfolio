@@ -179,7 +179,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
         background: Stack(
           children: [
             AnimatedBackgroundAppBarCenter(),
-           SlideTransition(
+            SlideTransition(
               position: _slideAnimationBackground,
               child: FadeTransition(
                 opacity: _fadeAnimationBackground,
@@ -264,11 +264,13 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
   Widget _buildAnimatedButton() {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    return Positioned(
+    return 
+      Stack(
+        children: [
+    Positioned(
       bottom: 90,
       left: screenWidth / 2 - 100,
-      child: Stack(
-        children: [
+      child: 
           AnimatedBuilder(
             animation: _animationButton, 
             builder: (context, child) {
@@ -301,8 +303,8 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
               );
             }, 
           ),
+    ),
         ],
-      ),           
-    );
+      );          
   }
 }

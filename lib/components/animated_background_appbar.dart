@@ -15,7 +15,6 @@ class _AnimatedBackgroundAppbarState extends State<AnimatedBackgroundAppbar> wit
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-
     return Stack(
       children: [
         screenWidth < 768 ?

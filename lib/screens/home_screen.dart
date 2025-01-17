@@ -122,30 +122,50 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             children: [
               // Widget to display animation for small screens
               screenWidth < 768 ?
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+              Stack(
+                // mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Positioned(
-                    child: AnimatedOpacity(
+                                 
+                    AnimatedOpacity(
                       opacity: _animationOpacity,
                       duration: Duration(seconds: 5),
                       child: AnimatedBackgroundHomeScreen(),
                     ),
-                  ), 
-                  Positioned(
-                    child: AnimatedOpacity(
+              
+                  
+                    AnimatedOpacity(
                       opacity: _animationOpacity,
                       duration: Duration(seconds:5),
                       child: AnimatedBackgroundHomeScreen(),
                     ),
-                  ), 
-                  Positioned(
-                    child: AnimatedOpacity(
+                 
+                  AnimatedOpacity(
                       opacity: _animationOpacity,
                       duration: Duration(seconds: 5),
                       child: AnimatedBackgroundHomeScreen(),
                     ),
-                  ), 
+                  
+                  // Positioned(
+                  //   child: AnimatedOpacity(
+                  //     opacity: _animationOpacity,
+                  //     duration: Duration(seconds: 5),
+                  //     child: AnimatedBackgroundHomeScreen(),
+                  //   ),
+                  // ), 
+                  // Positioned(
+                  //   child: AnimatedOpacity(
+                  //     opacity: _animationOpacity,
+                  //     duration: Duration(seconds:5),
+                  //     child: AnimatedBackgroundHomeScreen(),
+                  //   ),
+                  // ), 
+                  // Positioned(
+                  //   child: AnimatedOpacity(
+                  //     opacity: _animationOpacity,
+                  //     duration: Duration(seconds: 5),
+                  //     child: AnimatedBackgroundHomeScreen(),
+                  //   ),
+                  // ), 
                 ],
               )
               :
