@@ -83,22 +83,24 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/profile.png
-    - assets/appbar_background_mobile.png
-    - assets/appbar_background_web.png
-    - assets/your_weather.png
-    - assets/drawer_background.png
-    - assets/my_portfolio.png
-    - assets/cv_Andrés_Angulo.pdf
-    - assets/animation_projects_card.json
-    - assets/home_web.json
-    - assets/main_scene.json
-    - assets/home_mobile.json
-    - assets/button.json
-    - assets/animation_web.gif
-    - assets/animation_mobile.gif
-    - assets/animation_splash_screen.json
-    - assets/my_logo.riv
+    - assets/
+    # - assets/profile.png
+    # - assets/appbar_background_mobile.png
+    # - assets/appbar_background_web.png
+    # - assets/your_weather.png
+    # - assets/drawer_background.png
+    # - assets/my_portfolio.png
+    # - assets/cv_Andrés_Angulo.pdf
+    # - assets/animation_projects_card.json
+    # - assets/home_web.json
+    # - assets/main_scene.json
+    # - assets/home_mobile.json
+    # - assets/button.json
+    # - assets/animation_web.gif
+    # - assets/animation_mobile.gif
+    # - assets/animation_splash_screen.json
+    # - assets/my_logo.riv
+    # - assets/circle_background.png
     - .env
 
 

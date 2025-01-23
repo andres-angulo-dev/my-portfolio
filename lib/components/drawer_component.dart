@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../utils/global_colors.dart';
 import '../utils/global_others.dart';
@@ -51,7 +52,7 @@ class DrawerComponent extends StatelessWidget {
             decoration: BoxDecoration(
               color: GlobalColors.drawerBackground,
               image: DecorationImage(
-                image: AssetImage(AppImages.drawerBackground), 
+                image: AssetImage(kIsWeb ? AppImages.drawerBackgroundWeb : AppImages.drawerBackgroundMobile), 
                 fit: BoxFit.cover,
               ),
             ),

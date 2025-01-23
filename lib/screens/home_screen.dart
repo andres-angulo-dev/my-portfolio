@@ -125,47 +125,21 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               Stack(
                 // mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                                 
-                    AnimatedOpacity(
-                      opacity: _animationOpacity,
-                      duration: Duration(seconds: 5),
-                      child: AnimatedBackgroundHomeScreen(),
-                    ),
-              
-                  
-                    AnimatedOpacity(
-                      opacity: _animationOpacity,
-                      duration: Duration(seconds:5),
-                      child: AnimatedBackgroundHomeScreen(),
-                    ),
-                 
+                  AnimatedOpacity(
+                    opacity: _animationOpacity,
+                    duration: Duration(seconds: 5),
+                    child: AnimatedBackgroundHomeScreen(),
+                  ),
+                  AnimatedOpacity(
+                    opacity: _animationOpacity,
+                    duration: Duration(seconds:5),
+                    child: AnimatedBackgroundHomeScreen(),
+                  ),
                   AnimatedOpacity(
                       opacity: _animationOpacity,
                       duration: Duration(seconds: 5),
                       child: AnimatedBackgroundHomeScreen(),
-                    ),
-                  
-                  // Positioned(
-                  //   child: AnimatedOpacity(
-                  //     opacity: _animationOpacity,
-                  //     duration: Duration(seconds: 5),
-                  //     child: AnimatedBackgroundHomeScreen(),
-                  //   ),
-                  // ), 
-                  // Positioned(
-                  //   child: AnimatedOpacity(
-                  //     opacity: _animationOpacity,
-                  //     duration: Duration(seconds:5),
-                  //     child: AnimatedBackgroundHomeScreen(),
-                  //   ),
-                  // ), 
-                  // Positioned(
-                  //   child: AnimatedOpacity(
-                  //     opacity: _animationOpacity,
-                  //     duration: Duration(seconds: 5),
-                  //     child: AnimatedBackgroundHomeScreen(),
-                  //   ),
-                  // ), 
+                    ), 
                 ],
               )
               :

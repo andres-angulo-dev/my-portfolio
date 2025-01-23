@@ -22,9 +22,23 @@ class AboutMeCard extends StatelessWidget {
             ),
           ),
           // Main content
+          screenWidth < 768 ?
+          Container()
+          :
+          Positioned(
+            top: -340,
+            right: -50,
+            child: Image.asset(
+              AppImages.aboutMeBackground,
+              width: 1100,
+              height: 1100,
+              fit: BoxFit.contain,
+            )
+          )        
+          ,
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: screenWidth < 768 ? EdgeInsets.all(20.0) : EdgeInsets.all(70.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -70,7 +84,7 @@ class AboutMeCard extends StatelessWidget {
                           Container(
                             alignment: screenWidth < 748 ? Alignment(0.85, -0.5) : Alignment(1.05, -0.7),
                             child: Lottie.asset(
-                            "assets/button.json",
+                            AppImages.aboutMeAnimatedButton,
                               width: 50,
                               height: 50, 
                             ),
@@ -105,7 +119,7 @@ class AboutMeCard extends StatelessWidget {
           ) :
           Container(
             alignment: Alignment.center,
-            margin: EdgeInsets.only(left: 700),
+            margin: EdgeInsets.fromLTRB(750, 50, 0, 0),
             child: CircleAvatar(
               radius: 110, // Size of the avatar.
               backgroundColor: GlobalColors.tertiaryBackground, // Background color.
@@ -121,10 +135,9 @@ class AboutMeCard extends StatelessWidget {
                 ),
               ),
             ),
-          )
-          ,
+          ),
         ],
-      ), 
+      ),
     );
   }
 }
@@ -139,10 +152,11 @@ class BackgroundPainterWeb extends CustomPainter {
 
     // Create the path for the shadow
     Path shadowPath = Path()
-      // ..moveTo(0, size.height * 0.01) // Corner top-left
+      ..moveTo(0, size.height * 0.10) // Corner top-left
       // ..lineTo(size.width, size.height * -0.12) // Corner top-right
-      ..lineTo(size.width, size.height * 1.13) // Corner bottom-left
-      ..lineTo(0, size.height * 0.95) // Corner bottom-left
+      // ..lineTo(size.width, size.height +200) // Corner bottom-left
+      ..lineTo(size.width, size.height * 0.9) // Corner bottom-left
+      ..lineTo(0, size.height * 0.8) // Corner bottom-left
       ..close();
 
     canvas.drawPath(shadowPath, shadowPaint); // Draw the shadow
@@ -152,10 +166,10 @@ class BackgroundPainterWeb extends CustomPainter {
 
     // Create a background with oblique lines and larger size
     Path path = Path()
-      ..moveTo(0, size.height * 0.01) // Corner top-left
-      ..lineTo(size.width, size.height * -0.12) // Corner top-right
-      ..lineTo(size.width, size.height * 1.13) // Corner bottom-left
-      ..lineTo(0, size.height * 0.95) // Corner bottom-left
+      ..moveTo(0, size.height * 0.05) // Corner top-left
+      ..lineTo(size.width, size.height * 0.0) // Corner top-right
+      ..lineTo(size.width, size.height * 0.9) // Corner bottom-right
+      ..lineTo(0, size.height * 0.8) // Corner bottom-left
       ..close();
 
     canvas.drawPath(path, paint); // Draw the main path

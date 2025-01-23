@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import '../utils/global_others.dart';
 
 
 class AnimatedBackgroundProjectsCard extends StatefulWidget {
@@ -17,7 +18,7 @@ class _AnimatedBackgroundProjectsCardState extends State<AnimatedBackgroundProje
       children: [
         Positioned(
           child: Lottie.asset(
-            "assets/animation_projects_card.json",
+            AppImages.projectAnimatedDesk,
             reverse: true,
             width: 600,
             height: 600,

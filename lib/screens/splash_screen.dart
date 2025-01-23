@@ -26,7 +26,7 @@ class SplashScreen extends StatelessWidget {
           child: AnimatedSplashScreen(
             // splash: Lottie.asset("assets/animation_splash_screen.json"),
             splash: RiveAnimation.asset(
-              "assets/my_logo.riv",
+              "assets/splash_screen_animated_my_logo.riv",
               fit: BoxFit.cover,
             ),
             backgroundColor: GlobalColors.primaryBackground,

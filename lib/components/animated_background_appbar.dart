@@ -1,6 +1,7 @@
 // With Lottie widget
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import '../utils/global_others.dart';
 
 class AnimatedBackgroundAppbar extends StatefulWidget {
   const AnimatedBackgroundAppbar({ super.key });
@@ -22,7 +23,7 @@ class _AnimatedBackgroundAppbarState extends State<AnimatedBackgroundAppbar> wit
           top: 18,
           right: -175,
           child: Lottie.asset(
-            "assets/main_scene.json",
+            AppImages.appbarAnimatedLeft,
             width: 600,
           ),
         )
@@ -30,7 +31,7 @@ class _AnimatedBackgroundAppbarState extends State<AnimatedBackgroundAppbar> wit
         Positioned(
           width: screenWidth / 0.595,
           child: Lottie.asset(
-            "assets/main_scene.json",
+            AppImages.appbarAnimatedLeft,
             width: screenWidth,
             height: screenHeight,
           ),
