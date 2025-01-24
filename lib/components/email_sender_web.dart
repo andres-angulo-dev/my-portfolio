@@ -18,7 +18,7 @@ Future<void> sendEmail(
   if (formKey.currentState!.validate()) {
     try {
       final response = await http.post(
-        Uri.parse('http://localhost:3000/send_email'),
+        Uri.parse('https://my-portfolio-backend-oa2xug4t8-afas75s-projects.vercel.app/send_email'),
         headers: {
           'Content-Type': 'application/json',
         },
