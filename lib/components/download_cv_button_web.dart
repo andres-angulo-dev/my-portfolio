@@ -62,15 +62,15 @@ class DownloadCvButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () => _downloadCV(context),
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10), // Ajoute de l’espace autour du texte
-        minimumSize: Size(900, 50), // Définir la taille minimale du bouton
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        minimumSize: Size(900, 50),
       ),
       child: Text(
         'Télécharger mon CV', 
         style: TextStyle(
           fontSize: 18
         ),
-      ), // Ajuste la taille du texte selon ton besoin
+      ),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
 
 Future<void> sendEmail(
   { required GlobalKey<FormState> formKey,
@@ -18,7 +20,7 @@ Future<void> sendEmail(
   if (formKey.currentState!.validate()) {
     try {
       final response = await http.post(
-        Uri.parse('https://my-portfolio-backend-oa2xug4t8-afas75s-projects.vercel.app/send_email'),
+        Uri.parse(dotenv.env['BACKEND_URL']!),
         headers: {
           'Content-Type': 'application/json',
         },
