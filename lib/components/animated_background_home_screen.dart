@@ -20,9 +20,10 @@ class _AnimatedBackgroundHomeScreenState extends State<AnimatedBackgroundHomeScr
         Positioned(
           child: Lottie.asset(
             "assets/home_mobile.json",
-                        width: 3000,
-            height: 1200,
+            // width: 3000,
+            height: 3600,
             reverse: true,
+            fit: BoxFit.cover,
           ),
         )
         :

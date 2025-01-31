@@ -24,6 +24,7 @@ class GlobalColors {
   static const Color textColor = Colors.black; 
   static const Color projectsTitleColor = Color.fromARGB(255, 0, 0, 0); 
   static const Color drawerTitleColor = Colors.white;
+  static const Color skillsTextColor = Colors.white; 
   static const Color technoTitleColor = Colors.white;
 
   // Contact
@@ -41,10 +42,14 @@ class GlobalColors {
   static const Color circularIconClose = Color(0xFFDAD7CD); 
 
   // Skills
-  static const Color skillsCardBorder1 = Color(0xFFFFB300);
-  static const Color skillsCardBorder2 = Colors.green;
-  static const Color skillsCardBorder3 = Colors.blue;
-  static const Color skillsCardBorder4 = Colors.pink;
+  // static const Color skillsCardBorder1 = Color(0xFFFFB300);
+  // static const Color skillsCardBorder2 = Colors.green;
+  // static const Color skillsCardBorder3 = Colors.blue;
+  // static const Color skillsCardBorder4 = Colors.pink;
+  static const Color skillsCardBorder1 = Color(0xFFA3B18A);
+  static const Color skillsCardBorder2 = Color(0xFFA3B18A);
+  static const Color skillsCardBorder3 = Color(0xFFA3B18A);
+  static const Color skillsCardBorder4 = Color(0xFFA3B18A);
   static const Color skillsIconBlack = Colors.black;
 
   // Techno

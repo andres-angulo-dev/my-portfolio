@@ -2,7 +2,7 @@
     package="com.example.andres_angulo_portfolio">
     
     <application
-        android:label="Andrés Angulo Portfolio"
+        android:label="Andrés Angulo | Portfolio"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,10 +1,10 @@
 {
     "name": "Andrés Angulo | Portfolio",
-    "short_name": "AndrésPortfolio",
+    "short_name": "Andrés Angulo Portfolio",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffb300",
-    "theme_color": "#a3b18a",
+    "theme_color": "#ffb300",
     "description": "Découvrez mon parcours, mes projets, mes compétences et technologies que je maîtrise dans mon portfolio digital.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,

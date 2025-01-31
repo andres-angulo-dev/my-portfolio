@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import './download_cv_button.dart';
@@ -18,13 +19,25 @@ class AboutMeCard extends StatelessWidget {
           // Background with oblique lines
           Positioned.fill(
             child: CustomPaint(
-              painter: screenWidth < 768 ? BackgroundPainterMobile() : BackgroundPainterWeb(),
+              painter: screenWidth < 968 ? BackgroundPainterMobile() : BackgroundPainterWeb(),
             ),
           ),
           // Main content
-          screenWidth < 768 ?
+          kIsWeb ?
+          screenWidth < 379 ?
           Container()
           :
+          screenWidth < 968  ?
+          Positioned(
+            bottom: -65,
+            right: -700,
+            child: Image.asset(
+              AppImages.aboutMeBackground,
+              height: 600,
+              fit: BoxFit.contain,
+            )
+          )
+          :   
           Positioned(
             top: -340,
             right: -50,
@@ -34,18 +47,27 @@ class AboutMeCard extends StatelessWidget {
               height: 1100,
               fit: BoxFit.contain,
             )
-          )        
-          ,
+          )
+          :
+          Positioned(
+            bottom: -65,
+            right: -700,
+            child: Image.asset(
+              AppImages.aboutMeBackground,
+              height: 600,
+              fit: BoxFit.contain,
+            )
+          ),   
           Center(
             child: Padding(
-              padding: screenWidth < 768 ? EdgeInsets.all(20.0) : EdgeInsets.all(70.0),
+              padding: screenWidth < 968 ? EdgeInsets.all(20.0) : EdgeInsets.all(70.0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      screenWidth < 768 ? 
+                      screenWidth < 968 ? 
                       'Depuis le début de cette aventure,\n'
                       'j\'explore quotidiennement cet\n'
                       'univers fascinant du développe-\n'
@@ -82,7 +104,7 @@ class AboutMeCard extends StatelessWidget {
                         children: [
                           DownloadCvButton(),
                           Container(
-                            alignment: screenWidth < 748 ? Alignment(0.85, -0.5) : Alignment(1.05, -0.7),
+                            alignment: kIsWeb ? Alignment(1.05, -0.7) : Alignment(0.85, -0.5),
                             child: Lottie.asset(
                             AppImages.aboutMeAnimatedButton,
                               width: 50,
@@ -97,10 +119,10 @@ class AboutMeCard extends StatelessWidget {
               ),
             ),
           ),
-          screenWidth < 768 ?
+          screenWidth < 968 ?
           Positioned(
             top: 10,
-            right: 3, // Top-right corner positioning.
+            left: 270, // Top-lefy corner positioning.
             child: CircleAvatar(
               radius: 70, // Size of the avatar.
               backgroundColor: GlobalColors.tertiaryBackground, // Background color.
@@ -120,6 +142,8 @@ class AboutMeCard extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             margin: EdgeInsets.fromLTRB(750, 50, 0, 0),
+            // height: 220,
+            // width: 220,
             child: CircleAvatar(
               radius: 110, // Size of the avatar.
               backgroundColor: GlobalColors.tertiaryBackground, // Background color.
@@ -129,7 +153,8 @@ class AboutMeCard extends StatelessWidget {
                   offset: const Offset(0, 0), // Adjust image position.
                   child: Image.asset(
                     AppImages.profile, // Profile image path.
-                    height: 280,
+                    height: 220,
+                    width: 220,
                     fit: BoxFit.cover, // Ensures the image covers the avatar area.
                   ),
                 ),
@@ -192,10 +217,10 @@ class BackgroundPainterMobile extends CustomPainter {
 
     // Create the path for the shadow
     Path shadowPath = Path()
-      // ..moveTo(0, size.height * 0.0) // Corner top-left
+      ..moveTo(0, size.height * 0.10) // Corner top-left
       // ..lineTo(size.width, size.height * 0.0) // Corner top-right
-      ..lineTo(size.width, size.height * 1.0) // Corner bottom-right
-      ..lineTo(0, size.height * 1.0) // Corner bottom-left
+      ..lineTo(size.width, size.height * 0.98) // Corner bottom-right
+      ..lineTo(0, size.height * 0.95) // Corner bottom-left
       ..close();
 
     canvas.drawPath(shadowPath, shadowPaint); // Draw the shadow
@@ -205,10 +230,10 @@ class BackgroundPainterMobile extends CustomPainter {
 
     // Create a background with oblique lines and larger size
     Path path = Path()
-      ..moveTo(0, size.height * 0.0) // Corner top-left
+      ..moveTo(0, size.height * 0.02) // Corner top-left
       ..lineTo(size.width, size.height * 0.0) // Corner top-right
-      ..lineTo(size.width, size.height * 1.0) // Corner bottom-right
-      ..lineTo(0, size.height * 1.0) // Corner bottom-left
+      ..lineTo(size.width, size.height * 0.98) // Corner bottom-right
+      ..lineTo(0, size.height * 0.95) // Corner bottom-left
       ..close();
 
     canvas.drawPath(path, paint); // Draw the main path

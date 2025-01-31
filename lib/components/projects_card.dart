@@ -49,10 +49,10 @@ class _ProjectsCardState extends State<ProjectsCard> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)), // Rounded corners for a nice look
       color: GlobalColors.tertiaryBackground, // Background color
       child: Padding(
-        padding: EdgeInsets.all(10), // Padding inside the card
+        padding: EdgeInsets.all(0), // Padding inside the card
         child: CarouselSlider(
           options: CarouselOptions(
-            height: screenWidth < 768 ? 605 : null, // Remove height constraint from carousel options
+            height: 645, // Remove height constraint from carousel options
             autoPlay: true, // Automatically plays the carousel slides
             enlargeCenterPage: true, // Enlarges the center slide
           ),
@@ -74,7 +74,7 @@ class _ProjectsCardState extends State<ProjectsCard> {
                     mainAxisSize: MainAxisSize.min, // Allow column to take minimal space
                     children: [
                       SizedBox(
-                        height: screenWidth < 768 ? 335 : 435, // Fixed height for project image 
+                        height: kIsWeb ? 435 : 335, // Fixed height for project image 
                         child: Image.asset(
                           screenWidth < 768 ? project['imageMobile']! : project['imageWeb']!, // Display project image
                           fit: BoxFit.cover, // Ensure the image covers the entire area

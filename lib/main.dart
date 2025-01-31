@@ -22,7 +22,7 @@ class MyPortfolioApp extends StatelessWidget {
       statusBarColor: Colors.red, // Status bar color
     ));
     return MaterialApp(
-      title: 'Andrés Angulo Portfolio',
+      title: 'Andrés Angulo | Portfolio',
       theme: ThemeData(primarySwatch: Colors.green), 
       debugShowCheckedModeBanner: false,
       initialRoute: '/',

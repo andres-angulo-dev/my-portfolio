@@ -52,7 +52,7 @@ class DrawerComponent extends StatelessWidget {
             decoration: BoxDecoration(
               color: GlobalColors.drawerBackground,
               image: DecorationImage(
-                image: AssetImage(kIsWeb ? AppImages.drawerBackgroundWeb : AppImages.drawerBackgroundMobile), 
+                image: kIsWeb ?  AssetImage(AppImages.drawerBackgroundWeb) : AssetImage(AppImages.drawerBackgroundMobile), 
                 fit: BoxFit.cover,
               ),
             ),

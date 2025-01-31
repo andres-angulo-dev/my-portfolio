@@ -1,4 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Import this package to access SystemChrome who handle the statusBar
 import 'package:rive/rive.dart';
@@ -12,7 +13,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // To customize the status bar
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: GlobalColors.primaryBackground, 
+      statusBarColor: kIsWeb ? Colors.white : GlobalColors.primaryBackground, 
       statusBarIconBrightness: Brightness.light, // Light icons for Android
       statusBarBrightness: Brightness.dark, // Dark icons for iOS
     ));

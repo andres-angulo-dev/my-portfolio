@@ -145,7 +145,8 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               :
               // Widget to display animation for larger screens
               Positioned(
-                top: -280,
+                top: kIsWeb ? -280 : -600,
+                right: kIsWeb ? null : 150,
                 child: AnimatedOpacity(
                   opacity: _animationOpacity,
                   duration: Duration(seconds: 1),
@@ -190,9 +191,10 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         child: AnimatedOpacity(
                           opacity: _animationOpacity,
                           duration: Duration(seconds: 2),
-                          child: SizedBox(
+                          child: 
+                          SizedBox(
                             width: 900,
-                            height: 600,
+                            height: 605,
                             child: ProjectsCard(),
                           ),
                         ),
@@ -207,7 +209,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       opacity: _animationOpacity, 
                       duration: Duration(seconds: 2),
                       child: SizedBox(
-                        height: 582,
+                        height: 510,
                         child: ProjectsCard(),
                       ),
                     ),
