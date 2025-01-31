@@ -17,12 +17,26 @@ class _ProjectsCardState extends State<ProjectsCard> {
   OverlayEntry? _overlayEntry;
   final List<Map<String, dynamic>> projects = [
     {
+      'name': 'App : (en cours de développement)',
+      'imageMobile': AppImages.projectCookez,
+      'imageWeb': AppImages.projectCookez,
+      'url': 'andres-angulo.com',
+      'technologies': [
+        {'icon': FontAwesomeIcons.squareJs, 'color': GlobalColors.technoIconYellow, 'label': 'JS'},
+        {'icon': FontAwesomeIcons.react, 'color': GlobalColors.technoIconBlue, 'label': 'React'},
+        {'icon': null, 'color': null, 'label': 'Expo Go', 'image': AppImages.technoIconExpoGo },
+        {'icon': FontAwesomeIcons.database, 'color': GlobalColors.technoIconBlack, 'label': 'MongoDB'},
+      ],
+    },
+    {
       'name': 'Site : Mon Portfolio',
       'imageMobile': AppImages.projectMyPortfolioMobile,
       'imageWeb': AppImages.projectMyPortfolioWeb,
-      'url': 'https://weather-frontend-sage.vercel.app/',
+      'url': 'https://andres-angulo.com',
       'technologies': [
         {'icon': FontAwesomeIcons.flutter, 'color': GlobalColors.technoIconBlueOpt, 'label': 'Flutter'},
+        {'icon': null, 'color': null, 'label': 'Firebase', 'image': AppImages.technoIconFirebase },
+        {'icon': null, 'color': null, 'label': 'Vercel', 'image': AppImages.technoIconVercel },
       ],
     },
     {
@@ -124,11 +138,10 @@ class _ProjectsCardState extends State<ProjectsCard> {
                                                 child: child,
                                               );
                                             },
-                                            child: FaIcon(
-                                              tech['icon'],
-                                              color: tech['color'],
-                                              size: 30, // Default size of the icon
-                                            ),
+                                            child: // Display the technology icon.
+                                            tech['icon'] != null
+                                            ? FaIcon(tech['icon'], color: tech['color'], size: 30) 
+                                            : Image.asset(tech['image'], height: 30, width: 30),
                                           ),
                                         ),
                                         kIsWeb ? SizedBox.shrink() : Text(

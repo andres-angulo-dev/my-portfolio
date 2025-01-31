@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import '../utils/global_colors.dart';
+import '../utils/global_others.dart';
 
 class TechnoCard extends StatefulWidget {
   final String title;
@@ -95,8 +96,10 @@ class TechnoCardState extends State<TechnoCard> with SingleTickerProviderStateMi
                                 child: SizedBox(
                                   width: 50,
                                   height: 50,
-                                  child: Center(
-                                    child: FaIcon(techno['icon'], size: 40.0, color: techno['color']), // Display the technology icon.
+                                  child: Center( // Display the technology icon.
+                                    child: techno['icon'] != null
+                                    ? FaIcon(techno['icon'], size: 40.0, color: techno['color'])
+                                    : Image.asset(techno['image'], height: 40, width: 40), 
                                   ),
                                 ),
                               ),
@@ -217,6 +220,9 @@ class TechnologiesCard extends StatelessWidget {
             color: backgroundColorTitle,
             technologies: [
               {'icon': FontAwesomeIcons.github, 'color': GlobalColors.technoIconBlack, 'label': 'GitHub'},
+              {'icon': null, 'color': null, 'label': 'Firebase', 'image': AppImages.technoIconFirebase },
+              {'icon': null, 'color': null, 'label': 'Vercel', 'image': AppImages.technoIconVercel },
+              {'icon': null, 'color': null, 'label': 'Expo Go', 'image': AppImages.technoIconExpoGo },
             ],
             isLastCard: true,
           ),
