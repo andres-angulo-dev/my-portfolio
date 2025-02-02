@@ -18,20 +18,19 @@ Future<void> sendEmail(
   setIsSending(true);
 
   if (formKey.currentState!.validate()) {
-    // final backendUrl = dotenv.env['BACKEND_URL'];
+    final backendUrl = dotenv.env['BACKEND_URL'];
 
-    // if (backendUrl == null) {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(content: Text('Backend URL not set')),
-    //   );
-    //   setIsSending(false);
-    //   return;
-    // }
+    if (backendUrl == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Backend URL not set')),
+      );
+      setIsSending(false);
+      return;
+    }
 
     try {
       final response = await http.post(
-        // Uri.parse(dotenv.env['BACKEND_URL']!),
-        Uri.parse('https://my-portfolio-backend-lilac-gamma.vercel.app/send_email'),
+        Uri.parse(backendUrl),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -44,11 +43,12 @@ Future<void> sendEmail(
           'message': messageController.text,
         }),
       );
+      final responseData = jsonDecode(response.body);
 
-      if (response.statusCode == 200) {
+      if (responseData['result'] == true) {
         showSuccessDialog();
       } else {
-        throw Exception('Failed to send email');
+        throw Exception(responseData['error']);
       }
     } catch (error) {
       if (!context.mounted) return;

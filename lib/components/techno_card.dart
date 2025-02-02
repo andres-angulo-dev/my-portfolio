@@ -188,6 +188,9 @@ class TechnologiesCard extends StatelessWidget {
             color: backgroundColorTitle,
             technologies: [
               {'icon': FontAwesomeIcons.github, 'color': GlobalColors.technoIconBlack, 'label': 'GitHub'},
+              {'icon': null, 'color': null, 'label': 'Firebase', 'image': AppImages.technoIconFirebase },
+              {'icon': null, 'color': null, 'label': 'Vercel', 'image': AppImages.technoIconVercel },
+              {'icon': null, 'color': null, 'label': 'Expo Go', 'image': AppImages.technoIconExpoGo },
             ],
           isLastCard: true,
           ),

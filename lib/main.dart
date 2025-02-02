@@ -6,7 +6,7 @@ import './screens/contact_screen.dart';
 
 Future<void> main() async {
   try {
-    await dotenv.load(fileName: '.env'); // Load environment variables from the .env file.
+    await dotenv.load(fileName: 'local.env'); // Load environment variables from the .env file.
     runApp(const MyPortfolioApp());
   } catch (error) {
     debugPrint('Error loading .env file: $error');
