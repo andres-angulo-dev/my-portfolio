@@ -21,6 +21,8 @@ Future<void> sendEmail(
       final smtpServer = SmtpServer(
         dotenv.env['MAILTRAP_HOST']!,
         port: int.parse(dotenv.env['MAILTRAP_PORT']!),
+        ssl: true,
+        ignoreBadCertificate: true,
         username: dotenv.env['MAILTRAP_USERNAME'],
         password: dotenv.env['MAILTRAP_PASSWORD'],
       );
@@ -28,13 +30,12 @@ Future<void> sendEmail(
       final message = Message()
         ..from = Address(dotenv.env['MAILTRAP_FROM']!, '${firstNameController.text} ${lastNameController.text}')
         ..recipients.add(dotenv.env['MAILTRAP_TO']!)
-        ..subject = 'New contact message'
+        ..subject = 'New contact message by ${lastNameController.text}'
         ..text = 'LastName: ${lastNameController.text}\n'
             'FirstName: ${firstNameController.text}\n'
-            'Email: ${emailController.text}\n'
             'Company: ${companyController.text}\n'
             'Phone: ${phoneController.text}\n'
-            'Message: ${messageController.text}';
+            '${messageController.text}';
 
       await send(message, smtpServer);
       showSuccessDialog();
