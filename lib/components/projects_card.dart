@@ -51,6 +51,18 @@ class _ProjectsCardState extends State<ProjectsCard> {
         {'icon': FontAwesomeIcons.database, 'color': GlobalColors.technoIconBlack, 'label': 'MongoDB'},
       ],
     },
+    {
+      'name': 'Site : (en cours de développement)',
+      'imageMobile' : AppImages.projectYourWeatherMobile,
+      'imageWeb' : AppImages.projectSio2RenovationsWeb,
+      'url': 'https://www.sio2renovations.com',
+      'technologies': [
+        {'icon': FontAwesomeIcons.flutter, 'color': GlobalColors.technoIconBlueOpt, 'label': 'Flutter'},
+        {'icon': null, 'color': null, 'label': 'Vercel', 'image': AppImages.technoIconVercel },
+        {'icon': null, 'color': null, 'label': 'Ovh', 'image': AppImages.technoIconOvh },
+        {'icon': FontAwesomeIcons.database, 'color': GlobalColors.technoIconBlack, 'label': 'MongoDB'},
+      ],
+    }
   ];
 
   @override

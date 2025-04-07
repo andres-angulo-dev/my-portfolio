@@ -13,9 +13,12 @@ class AppImages {
   static const String projectMyPortfolioMobile = 'assets/my_portfolio_mobile.webp';
   static const String projectYourWeatherWeb = 'assets/your_weather_web.webp';
   static const String projectYourWeatherMobile = 'assets/your_weather_mobile.webp';
+  static const String projectSio2RenovationsWeb = 'assets/sio2_renovations_web.webp';
+  static const String projectSio2RenovationsMobile = 'assets/sio2_renovations_mobile.webp';
   static const String projectCookez = 'assets/cookez.webp';
   static const String splashScreenAnimated = 'assets/splash_screen_animated_my_logo.riv';
   static const String technoIconFirebase = 'assets/firebase.png';
   static const String technoIconVercel = 'assets/vercel.png';
   static const String technoIconExpoGo = 'assets/expogo.png';
+  static const String technoIconOvh = 'assets/ovh.png';
 }
