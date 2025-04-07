@@ -23,12 +23,11 @@ class AboutMeCard extends StatelessWidget {
             ),
           ),
           // Main content
-          kIsWeb ?
-          screenWidth < 379 ?
-          Container()
-          :
-          screenWidth < 968  ?
-          Positioned(
+          kIsWeb 
+          ? screenWidth < 400
+          ? Container()
+          : screenWidth < 968  
+          ? Positioned(
             bottom: -65,
             right: -700,
             child: Image.asset(
@@ -37,8 +36,7 @@ class AboutMeCard extends StatelessWidget {
               fit: BoxFit.contain,
             )
           )
-          :   
-          Positioned(
+          : Positioned(
             top: -340,
             right: -50,
             child: Image.asset(
@@ -48,8 +46,7 @@ class AboutMeCard extends StatelessWidget {
               fit: BoxFit.contain,
             )
           )
-          :
-          Positioned(
+          : Positioned(
             bottom: -65,
             right: -700,
             child: Image.asset(
@@ -57,8 +54,72 @@ class AboutMeCard extends StatelessWidget {
               height: 600,
               fit: BoxFit.contain,
             )
-          ),   
-          Center(
+          ), 
+          screenWidth < 400 
+          ? Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                radius: 70, // Size of the avatar.
+                backgroundColor: GlobalColors.tertiaryBackground, // Background color.
+                child: ClipOval(
+                  // Fits the image within the circular shape.
+                  child: Transform.translate(
+                    offset: const Offset(0, 0), // Adjust image position.
+                    child: Image.asset(
+                      AppImages.profile, // Profile image path.
+                      height: 180,
+                      fit: BoxFit.cover, // Ensures the image covers the avatar area.
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20.0),
+              Text(
+                'Depuis le début de cette aventure,'
+                'j\'explore quotidiennement cet'
+                'univers fascinant du développe-'
+                'ment et du code. Une passion'
+                'grandissante qui me pousse à'
+                'affiner mes compétences et à'
+                'approfondir ma compréhension de ce domaine riche et complexe. '
+                'Mon parcours en développement web full-stack me permet de transformer des idées innovantes en solutions numériques.\n\n'
+                '🔍 Vision: Exploiter des solutions technologiques qui font la différence.\n\n'
+                '🚀 Motivation: L\'innovation constante, guidée par la curiosité et l\'envie de créer.\n\n'
+                '🌍 Engagement: Collaborer et apprendre pour évoluer dans un monde numérique en perpétuelle évolution.\n\n'
+                'Pour en savoir plus sur mon expérience profesionnelle, je vous invite à télécharger mon CV ci-dessous 👇',
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: GlobalColors.textColor, // Text color for readability.
+                ),
+                textAlign: TextAlign.justify,
+              ),
+              Container(
+                alignment: Alignment(0, 0),
+                width: 250,
+                height: 100,
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    DownloadCvButton(),
+                    Container(
+                      alignment: kIsWeb ? Alignment(1.05, -0.7) : Alignment(0.85, -0.5),
+                        child: Lottie.asset(
+                          AppImages.aboutMeAnimatedButton,
+                            width: 50,
+                            height: 50, 
+                          ),
+                        )
+                      ],
+                    )
+                  )
+                ]
+              )
+            )
+          : Center(
             child: Padding(
               padding: screenWidth < 968 ? EdgeInsets.all(20.0) : EdgeInsets.all(70.0),
               child: SingleChildScrollView(
@@ -119,8 +180,10 @@ class AboutMeCard extends StatelessWidget {
               ),
             ),
           ),
-          screenWidth < 968 ?
-          Positioned(
+          screenWidth < 400 
+          ? SizedBox.shrink()
+          : screenWidth < 968 
+          ? Positioned(
             top: 10,
             left: 270, // Top-lefy corner positioning.
             child: CircleAvatar(
@@ -138,8 +201,8 @@ class AboutMeCard extends StatelessWidget {
                 ),
               ),
             ),
-          ) :
-          Container(
+          ) 
+          : Container(
             alignment: Alignment.center,
             margin: EdgeInsets.fromLTRB(750, 50, 0, 0),
             // height: 220,
@@ -172,7 +235,7 @@ class BackgroundPainterWeb extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // Paint for the shadow
     Paint shadowPaint = Paint()
-      ..color = const Color.fromARGB(255, 0, 0, 0).withOpacity(0.4) // Shadow color with opacity
+      ..color = const Color.fromARGB(255, 0, 0, 0).withValues(alpha: 0.4) // Shadow color with opacity
       ..maskFilter = MaskFilter.blur(BlurStyle.normal, 10); // Blur effect for the shadow
 
     // Create the path for the shadow
@@ -212,7 +275,7 @@ class BackgroundPainterMobile extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // Paint for the shadow
     Paint shadowPaint = Paint()
-      ..color = const Color.fromARGB(255, 0, 0, 0).withOpacity(0.4) // Shadow color with opacity
+      ..color = const Color.fromARGB(255, 0, 0, 0).withValues(alpha: 0.4) // Shadow color with opacity
       ..maskFilter = MaskFilter.blur(BlurStyle.normal, 10); // Blur effect for the shadow
 
     // Create the path for the shadow

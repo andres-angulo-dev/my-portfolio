@@ -53,7 +53,7 @@ class _ProjectsCardState extends State<ProjectsCard> {
     },
     {
       'name': 'Site : (en cours de développement)',
-      'imageMobile' : AppImages.projectYourWeatherMobile,
+      'imageMobile' : AppImages.projectSio2RenovationsWeb,
       'imageWeb' : AppImages.projectSio2RenovationsWeb,
       'url': 'https://www.sio2renovations.com',
       'technologies': [
@@ -117,14 +117,18 @@ class _ProjectsCardState extends State<ProjectsCard> {
                             borderRadius: BorderRadius.circular(10), // Rounded corners
                           ),
                           child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
                                 project['name']!,
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: screenWidth < 400 ? 14.0 : 16.0,
                                   fontWeight: FontWeight.bold,
                                   color: GlobalColors.tertiaryBackground, // Text color for readability
                                 ),
+                                textAlign: TextAlign.center,
                               ),
                               Divider(
                                 color: GlobalColors.tertiaryBackground,

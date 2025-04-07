@@ -109,7 +109,7 @@ class SkillsCardState extends State<SkillsCard> with SingleTickerProviderStateMi
                         SizedBox(
                           height: 330.0,
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start horizontally.
+                            crossAxisAlignment: CrossAxisAlignment.center, // Align children to the start horizontally.
                             children: [
                               Container(
                                 decoration: BoxDecoration(
