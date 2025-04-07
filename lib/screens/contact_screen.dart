@@ -67,6 +67,7 @@ class ContactScreenState extends State<ContactScreen> {
             fontSize: 18.0,
           ),
         ),
+        scrolledUnderElevation: 0.0, // Disables the effect of change caused by scrolling.
         backgroundColor: GlobalColors.contactGradient1,
         iconTheme: IconThemeData(
           color: GlobalColors.textColor,

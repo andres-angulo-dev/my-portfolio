@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import '../utils/global_others.dart';
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html; // Import dart:html for web download
 
@@ -11,7 +12,7 @@ class DownloadCvButton extends StatelessWidget {
   Future<void> _downloadCV(BuildContext context) async {
     try {
       // Load the file from assets
-      final byteData = await rootBundle.load('assets/cv_Andrés_Angulo.pdf');
+      final byteData = await rootBundle.load(AppImages.cvAndresAngulo);
 
       // Convert ByteData to Uint8List
       final Uint8List data = byteData.buffer.asUint8List();

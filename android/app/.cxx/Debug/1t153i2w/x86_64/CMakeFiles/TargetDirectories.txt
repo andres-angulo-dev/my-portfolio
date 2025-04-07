@@ -1,0 +1,2 @@
+C:/Users/La Production/Desktop/Portfolio/My_portfolio/my_portfolio/android/app/.cxx/Debug/1t153i2w/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/La Production/Desktop/Portfolio/My_portfolio/my_portfolio/android/app/.cxx/Debug/1t153i2w/x86_64/CMakeFiles/rebuild_cache.dir

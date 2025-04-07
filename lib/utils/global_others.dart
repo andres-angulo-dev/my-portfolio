@@ -5,7 +5,7 @@ class AppImages {
   static const String appbarAnimatedMainWeb = 'assets/appBar_animation_main_web.gif';
   static const String appbarAnimatedMainMobile = 'assets/appBar_animation_main_mobile.gif';
   static const String appbarAnimatedLeft = 'assets/appBar_animation_left.json';
-  static const String cvAndresAngulo = 'assets/cv_Andrés_Angulo.pdf';
+  static const String cvAndresAngulo = 'assets/cv_Andres_Angulo.pdf';
   static const String aboutMeBackground = 'assets/circle_background.webp';
   static const String aboutMeAnimatedButton = 'assets/button.json';
   static const String projectAnimatedDesk = 'assets/animation_projects_card_desk.json';

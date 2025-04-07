@@ -130,6 +130,7 @@ class SkillsCardState extends State<SkillsCard> with SingleTickerProviderStateMi
                                     color: GlobalColors.skillsTextColor,
                                     fontWeight: FontWeight.bold,
                                   ),
+                                  textAlign: TextAlign.justify,
                                 ),
                               ),
                               Expanded(
@@ -149,6 +150,7 @@ class SkillsCardState extends State<SkillsCard> with SingleTickerProviderStateMi
                                       fontSize: 14,
                                       color: GlobalColors.textColor,
                                     ),
+                                    textAlign: TextAlign.justify,
                                   ),
                                 ),
                               ),

@@ -169,6 +169,7 @@ class AppBarComponentState extends State<AppBarComponent> with TickerProviderSta
 
     return SliverAppBar(
       pinned: true,
+      scrolledUnderElevation: 0.0, // Disables the effect of change caused by scrolling.
       backgroundColor: GlobalColors.primaryBackground,
       expandedHeight: screenSize.height,
       iconTheme: IconThemeData(
